@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "CalSans";
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: normal;
+  font-named-instance: "Semi-bold";
+  src: url(../public/fonts/CalSans-SemiBold.ttf) format("woff2");
+}
