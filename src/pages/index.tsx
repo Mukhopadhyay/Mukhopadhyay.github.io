@@ -1,31 +1,28 @@
 import * as React from "react";
 import type { HeadFC, PageProps } from "gatsby";
 import Particles from "../components/particles";
-import { Github, Mail, Twitter } from "lucide-react";
+import { Github, Mail, Twitter, Kaggle } from "lucide-react";
 
 const navigation = [
   { name: "Projects", href: "/projects" },
   { name: "Datasets", href: "/datasets" },
-  { name: "Contact", href: "/contact" },
+  { name: "Contact", href: "/contacts" },
 ];
 
 const IndexPage: React.FC<PageProps> = () => {
   return (
     // from-black via-zinc-600/20 to-black
-    <div className="flex flex-col items-center justify-center w-screen h-screen overflow-hidden bg-gradient-to-tl from-black via-zinc-800 to-black">
+    <div className="flex flex-col items-center justify-center w-screen h-screen overflow-hidden bg-gradient-to-tl from-black via-zinc-900 to-black">
       <nav className="my-16">
         <ul className="flex flex-wrap items-center justify-center gap-4">
           {navigation.map((item) => (
-            // <Link
-            //   key={item.href}
-            //     href={item.href}
-            //   className="text-sm duration-500 text-zinc-500 hover:text-zinc-300"
-            // >
-
-            <span className="text-sm duration-500 text-zinc-500 hover:text-zinc-300">
+            <a
+              key={item.href}
+              href={item.href}
+              className="text-sm duration-500 text-zinc-500 hover:text-zinc-300"
+            >
               {item.name}
-            </span>
-            // </Link>
+            </a>
           ))}
         </ul>
       </nav>
@@ -46,9 +43,13 @@ const IndexPage: React.FC<PageProps> = () => {
 
         {/* Resume */}
         <div className="mt-10">
-          <button className="text-zinc-200 font-bold p-4 border-[1px] border-zinc-200 duration-1000 hover:text-white hover:border-white rounded-full">
+          <a
+            download
+            href={"./../public/resume/Pranesh-Mukhopadhyay-resume.pdf"}
+            className="text-zinc-200 font-bold p-4 border-[1px] border-zinc-200 duration-1000 hover:text-white hover:border-white rounded-full"
+          >
             Resume
-          </button>
+          </a>
         </div>
       </div>
 
@@ -70,4 +71,4 @@ const IndexPage: React.FC<PageProps> = () => {
 
 export default IndexPage;
 
-export const Head: HeadFC = () => <title>Home Page</title>;
+export const Head: HeadFC = () => <title>Pranesh M.</title>;
