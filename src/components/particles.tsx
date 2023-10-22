@@ -54,7 +54,6 @@ export default function Particles({
   };
 
   const onMouseMove = () => {
-    console.log("Mouse moved");
     if (canvasRef.current) {
       const rect = canvasRef.current.getBoundingClientRect();
       const { w, h } = canvasSize.current;

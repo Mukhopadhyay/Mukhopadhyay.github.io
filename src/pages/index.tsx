@@ -1,7 +1,8 @@
 import * as React from "react";
 import type { HeadFC, PageProps } from "gatsby";
 import Particles from "../components/particles";
-import { Github, Mail, Twitter, Kaggle } from "lucide-react";
+import { Github, Mail, Twitter } from "lucide-react";
+import resume from "./../public/resume/Pranesh-Mukhopadhyay-resume.pdf";
 
 const navigation = [
   { name: "Projects", href: "/projects" },
@@ -44,9 +45,10 @@ const IndexPage: React.FC<PageProps> = () => {
         {/* Resume */}
         <div className="mt-10">
           <a
-            download
-            href={"./../public/resume/Pranesh-Mukhopadhyay-resume.pdf"}
+            // href="./../public/resume/Pranesh-Mukhopadhyay-resume.pdf"
+            href={resume}
             className="text-zinc-200 font-bold p-4 border-[1px] border-zinc-200 duration-1000 hover:text-white hover:border-white rounded-full"
+            download
           >
             Resume
           </a>

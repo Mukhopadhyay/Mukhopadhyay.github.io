@@ -9,7 +9,7 @@
     />
     <meta name="generator" content="Gatsby 5.12.4" />
     <style
-      data-href="/styles.0a1c6e2646311ef33e80.css"
+      data-href="/styles.b3ca67501fcf3ce8d304.css"
       data-identity="gatsby-global-css"
     >
       /*
@@ -220,6 +220,7 @@
         display: none;
       }
       html {
+        -webkit-tap-highlight-color: transparent;
         -webkit-user-select: none;
         -moz-user-select: none;
         user-select: none;
@@ -374,6 +375,9 @@
         left: 0;
         right: 0;
       }
+      .bottom-4 {
+        bottom: 1rem;
+      }
       .top-0 {
         top: 0;
       }
@@ -385,6 +389,9 @@
       }
       .z-10 {
         z-index: 10;
+      }
+      .z-20 {
+        z-index: 20;
       }
       .z-50 {
         z-index: 50;
@@ -432,8 +439,14 @@
       .h-2\/3 {
         height: 66.666667%;
       }
+      .h-4 {
+        height: 1rem;
+      }
       .h-6 {
         height: 1.5rem;
+      }
+      .h-full {
+        height: 100%;
       }
       .h-px {
         height: 1px;
@@ -447,6 +460,9 @@
       .w-12 {
         width: 3rem;
       }
+      .w-4 {
+        width: 1rem;
+      }
       .w-6 {
         width: 1.5rem;
       }
@@ -458,6 +474,12 @@
       }
       .w-screen {
         width: 100vw;
+      }
+      .max-w-2xl {
+        max-width: 42rem;
+      }
+      .max-w-7xl {
+        max-width: 80rem;
       }
       @keyframes fade-in {
         0% {
@@ -556,11 +578,22 @@
       .justify-between {
         justify-content: space-between;
       }
+      .gap-1 {
+        gap: 0.25rem;
+      }
+      .gap-2 {
+        gap: 0.5rem;
+      }
       .gap-4 {
         gap: 1rem;
       }
       .gap-8 {
         gap: 2rem;
+      }
+      .space-y-8 > :not([hidden]) ~ :not([hidden]) {
+        --tw-space-y-reverse: 0;
+        margin-bottom: calc(2rem * var(--tw-space-y-reverse));
+        margin-top: calc(2rem * (1 - var(--tw-space-y-reverse)));
       }
       .overflow-hidden {
         overflow: hidden;
@@ -580,6 +613,12 @@
       }
       .border-b {
         border-bottom-width: 1px;
+      }
+      .border-t {
+        border-top-width: 1px;
+      }
+      .border-gray-900\/10 {
+        border-color: rgba(17, 24, 39, 0.1);
       }
       .border-transparent {
         border-color: transparent;
@@ -603,6 +642,10 @@
       .bg-white {
         --tw-bg-opacity: 1;
         background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+      }
+      .bg-zinc-800 {
+        --tw-bg-opacity: 1;
+        background-color: rgb(39 39 42 / var(--tw-bg-opacity));
       }
       .bg-zinc-900 {
         --tw-bg-opacity: 1;
@@ -645,6 +688,11 @@
         --tw-gradient-to: hsla(240, 4%, 46%, 0) var(--tw-gradient-to-position);
         --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
       }
+      .from-zinc-900 {
+        --tw-gradient-from: #18181b var(--tw-gradient-from-position);
+        --tw-gradient-to: rgba(24, 24, 27, 0) var(--tw-gradient-to-position);
+        --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+      }
       .via-zinc-100\/10 {
         --tw-gradient-to: hsla(240, 5%, 96%, 0) var(--tw-gradient-to-position);
         --tw-gradient-stops: var(--tw-gradient-from),
@@ -655,6 +703,12 @@
         --tw-gradient-to: hsla(240, 5%, 84%, 0) var(--tw-gradient-to-position);
         --tw-gradient-stops: var(--tw-gradient-from),
           hsla(240, 5%, 84%, 0.5) var(--tw-gradient-via-position),
+          var(--tw-gradient-to);
+      }
+      .via-zinc-400\/10 {
+        --tw-gradient-to: hsla(240, 5%, 65%, 0) var(--tw-gradient-to-position);
+        --tw-gradient-stops: var(--tw-gradient-from),
+          hsla(240, 5%, 65%, 0.1) var(--tw-gradient-via-position),
           var(--tw-gradient-to);
       }
       .via-zinc-500\/50 {
@@ -683,6 +737,9 @@
       .to-zinc-300\/0 {
         --tw-gradient-to: hsla(240, 5%, 84%, 0) var(--tw-gradient-to-position);
       }
+      .to-zinc-900 {
+        --tw-gradient-to: #18181b var(--tw-gradient-to-position);
+      }
       .bg-clip-text {
         -webkit-background-clip: text;
         background-clip: text;
@@ -697,11 +754,25 @@
         padding-left: 1rem;
         padding-right: 1rem;
       }
+      .px-6 {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+      .pb-16 {
+        padding-bottom: 4rem;
+      }
+      .pt-20 {
+        padding-top: 5rem;
+      }
       .text-center {
         text-align: center;
       }
       .font-display {
         font-family: CalSans;
+      }
+      .text-3xl {
+        font-size: 1.875rem;
+        line-height: 2.25rem;
       }
       .text-4xl {
         font-size: 2.25rem;
@@ -711,14 +782,32 @@
         font-size: 0.875rem;
         line-height: 1.25rem;
       }
+      .text-xl {
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+      }
+      .text-xs {
+        font-size: 0.75rem;
+        line-height: 1rem;
+      }
       .font-bold {
         font-weight: 700;
       }
       .font-medium {
         font-weight: 500;
       }
+      .leading-8 {
+        line-height: 2rem;
+      }
+      .tracking-tight {
+        letter-spacing: -0.025em;
+      }
       .text-transparent {
         color: transparent;
+      }
+      .text-zinc-100 {
+        --tw-text-opacity: 1;
+        color: rgb(244 244 245 / var(--tw-text-opacity));
       }
       .text-zinc-200 {
         --tw-text-opacity: 1;
@@ -735,6 +824,9 @@
       .text-zinc-500 {
         --tw-text-opacity: 1;
         color: rgb(113 113 122 / var(--tw-text-opacity));
+      }
+      .underline {
+        text-decoration-line: underline;
       }
       .opacity-0 {
         opacity: 0;
@@ -829,6 +921,10 @@
         --tw-text-opacity: 1;
         color: rgb(212 212 216 / var(--tw-text-opacity));
       }
+      .hover\:text-zinc-50:hover {
+        --tw-text-opacity: 1;
+        color: rgb(250 250 250 / var(--tw-text-opacity));
+      }
       .group:hover .group-hover\:border-zinc-200 {
         --tw-border-opacity: 1;
         border-color: rgb(228 228 231 / var(--tw-border-opacity));
@@ -845,6 +941,10 @@
         --tw-text-opacity: 1;
         color: rgb(228 228 231 / var(--tw-text-opacity));
       }
+      .group:hover .group-hover\:text-zinc-300 {
+        --tw-text-opacity: 1;
+        color: rgb(212 212 216 / var(--tw-text-opacity));
+      }
       .group:hover .group-hover\:opacity-100 {
         opacity: 1;
       }
@@ -858,23 +958,44 @@
         .sm\:grid-cols-3 {
           grid-template-columns: repeat(3, minmax(0, 1fr));
         }
+        .sm\:text-4xl {
+          font-size: 2.25rem;
+          line-height: 2.5rem;
+        }
         .sm\:text-6xl {
           font-size: 3.75rem;
           line-height: 1;
         }
       }
       @media (min-width: 768px) {
+        .md\:bottom-8 {
+          bottom: 2rem;
+        }
         .md\:block {
           display: block;
+        }
+        .md\:grid-cols-3 {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
         }
         .md\:gap-8 {
           gap: 2rem;
         }
+        .md\:space-y-16 > :not([hidden]) ~ :not([hidden]) {
+          --tw-space-y-reverse: 0;
+          margin-bottom: calc(4rem * var(--tw-space-y-reverse));
+          margin-top: calc(4rem * (1 - var(--tw-space-y-reverse)));
+        }
         .md\:p-16 {
           padding: 4rem;
         }
+        .md\:p-8 {
+          padding: 2rem;
+        }
         .md\:py-24 {
           padding-bottom: 6rem;
+        }
+        .md\:pt-24,
+        .md\:py-24 {
           padding-top: 6rem;
         }
         .md\:text-9xl {
@@ -883,11 +1004,35 @@
         }
       }
       @media (min-width: 1024px) {
+        .lg\:mx-0 {
+          margin-left: 0;
+          margin-right: 0;
+        }
+        .lg\:block {
+          display: block;
+        }
+        .lg\:grid-cols-2 {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
         .lg\:gap-16 {
           gap: 4rem;
         }
+        .lg\:border-t-0 {
+          border-top-width: 0;
+        }
+        .lg\:px-8 {
+          padding-left: 2rem;
+          padding-right: 2rem;
+        }
         .lg\:pb-48 {
           padding-bottom: 12rem;
+        }
+        .lg\:pt-32 {
+          padding-top: 8rem;
+        }
+        .lg\:text-3xl {
+          font-size: 1.875rem;
+          line-height: 2.25rem;
         }
         .lg\:text-xl {
           font-size: 1.25rem;
@@ -1025,9 +1170,9 @@
             </h2>
             <div class="mt-10">
               <a
-                download=""
-                href="./../public/resume/Pranesh-Mukhopadhyay-resume.pdf"
+                href="./static/Pranesh-Mukhopadhyay-resume-c5aff02ef883995882be90ed583bb651.pdf"
                 class="text-zinc-200 font-bold p-4 border-[1px] border-zinc-200 duration-1000 hover:text-white hover:border-white rounded-full"
+                download=""
                 >Resume</a
               >
             </div>
@@ -1111,14 +1256,14 @@
     <!-- slice-start id="_gatsby-scripts-1" -->
     <script id="gatsby-chunk-mapping">
       window.___chunkMapping =
-        '{"app":["/app-8dca6a31ca22eb7a0897.js"],"component---src-pages-404-tsx":["/component---src-pages-404-tsx-9c7b2ef6f1e1602065bc.js"],"component---src-pages-contacts-tsx":["/component---src-pages-contacts-tsx-0cb23e43664c63621d48.js"],"component---src-pages-datasets-tsx":["/component---src-pages-datasets-tsx-a01fad83e90bd058fac2.js"],"component---src-pages-index-tsx":["/component---src-pages-index-tsx-45c1c613a094b7876264.js"]}';
+        '{"app":["/app-f62b2815293d967d6b98.js"],"component---src-pages-404-tsx":["/component---src-pages-404-tsx-b7237857ae2ab119f531.js"],"component---src-pages-contacts-tsx":["/component---src-pages-contacts-tsx-06a2107528451d2ea92e.js"],"component---src-pages-datasets-tsx":["/component---src-pages-datasets-tsx-59913cadc477a78808d2.js"],"component---src-pages-index-tsx":["/component---src-pages-index-tsx-9edda94037fd9ec275e0.js"]}';
     </script>
     <script>
-      window.___webpackCompilationHash = "1d0a8948c2ccde413a4b";
+      window.___webpackCompilationHash = "4b23791b1758919cbec4";
     </script>
-    <script src="/webpack-runtime-d6d9cffcfcd5349598ea.js" async></script>
-    <script src="/framework-106eaf75e588fec2b76f.js" async></script>
-    <script src="/app-8dca6a31ca22eb7a0897.js" async></script>
+    <script src="/webpack-runtime-133efed48b0fcba1a9bb.js" async></script>
+    <script src="/framework-2c7984042135e7d6caca.js" async></script>
+    <script src="/app-f62b2815293d967d6b98.js" async></script>
     <!-- slice-end id="_gatsby-scripts-1" -->
   </body>
 </html>
