@@ -15,7 +15,7 @@ const IndexPage: React.FC<PageProps> = () => {
     // from-black via-zinc-600/20 to-black
     <div className="flex flex-col items-center justify-center w-screen h-screen overflow-hidden bg-gradient-to-tl from-black via-zinc-900 to-black">
       <nav className="my-16">
-        <ul className="flex flex-wrap items-center justify-center gap-4">
+        <ul className="flex flex-wrap items-center justify-center gap-10">
           {navigation.map((item) => (
             <a
               key={item.href}
@@ -49,6 +49,7 @@ const IndexPage: React.FC<PageProps> = () => {
             href={resume}
             className="text-zinc-200 font-bold p-4 border-[1px] border-zinc-200 duration-1000 hover:text-white hover:border-white rounded-full"
             download
+            title="Download my Resume"
           >
             Resume
           </a>
@@ -57,13 +58,22 @@ const IndexPage: React.FC<PageProps> = () => {
 
       {/* Social drawer */}
       <div className="flex flex-row ">
-        <span className="relative mx-5 z-[100] flex items-center justify-center w-12 h-12 text-sm duration-1000 border rounded-full text-zinc-200 hover:text-white hover:bg-zinc-900 border-zinc-500 bg-zinc-900 hover:border-zinc-200 drop-shadow-orange">
+        <span
+          title="Twitter"
+          className="relative mx-5 z-[100] flex items-center justify-center w-12 h-12 text-sm duration-1000 border rounded-full text-zinc-200 hover:text-white hover:bg-zinc-900 border-zinc-500 bg-zinc-900 hover:border-zinc-200 drop-shadow-orange"
+        >
           <Twitter size={20} />
         </span>
-        <span className="relative mx-5 z-[100] flex items-center justify-center w-12 h-12 text-sm duration-1000 border rounded-full text-zinc-200 hover:text-white hover:bg-zinc-900 border-zinc-500 bg-zinc-900 hover:border-zinc-200 drop-shadow-orange">
+        <span
+          title="Github"
+          className="relative mx-5 z-[100] flex items-center justify-center w-12 h-12 text-sm duration-1000 border rounded-full text-zinc-200 hover:text-white hover:bg-zinc-900 border-zinc-500 bg-zinc-900 hover:border-zinc-200 drop-shadow-orange"
+        >
           <Github size={20} />
         </span>
-        <span className="relative mx-5 z-[100] flex items-center justify-center w-12 h-12 text-sm duration-1000 border rounded-full text-zinc-200 hover:text-white hover:bg-zinc-900 border-zinc-500 bg-zinc-900 hover:border-zinc-200 drop-shadow-orange">
+        <span
+          title="Email"
+          className="relative mx-5 z-[100] flex items-center justify-center w-12 h-12 text-sm duration-1000 border rounded-full text-zinc-200 hover:text-white hover:bg-zinc-900 border-zinc-500 bg-zinc-900 hover:border-zinc-200 drop-shadow-orange"
+        >
           <Mail size={20} />
         </span>
       </div>

@@ -2,25 +2,20 @@ import { PageProps } from "gatsby";
 import React from "react";
 import { Navigation } from "../components/nav";
 import { Card } from "../components/card";
-import { Dataset as DatasetCard } from "../components/dataset";
-import { Eye, View, Star, MoveUp } from "lucide-react";
+import { Project as ProjectCard } from "../components/project";
+import { Star, MoveUp } from "lucide-react";
 
-import { datasets } from "./../../data/datasets";
-import { Dataset } from "./../../types/data";
+import { projects } from "./../../data/projects";
+import { Project } from "./../../types/data";
 
-const highlight: Dataset = datasets[0];
-const otherDatasets: Array<Dataset> = datasets.slice(1);
+const highlight: Project = projects[0];
 
-const top2 = datasets[1];
-const top3 = datasets[2];
+const top2 = projects[1];
+const top3 = projects[2];
 
-const DatasetsPage: React.FC<PageProps> = () => {
-  console.log("highlight");
-  console.log(highlight);
+const otherProjects: Array<Project> = projects.slice(3);
 
-  console.log("otherDatasets");
-  console.log(otherDatasets);
-
+const ProjectPage: React.FC<PageProps> = () => {
   return (
     // from-zinc-900 via-zinc-400/10 to-zinc-900
     <div className="relative min-h-screen bg-gradient-to-tl from-black via-zinc-900 to-black">
@@ -29,17 +24,17 @@ const DatasetsPage: React.FC<PageProps> = () => {
         <div className="px-6 pt-20 mx-auto space-y-8 max-w-7xl lg:px-8 md:space-y-16 md:pt-24 lg:pt-32">
           <div className="max-w-2xl mx-auto lg:mx-0">
             <h2 className="text-3xl font-bold tracking-tight text-zinc-100 sm:text-4xl">
-              Datasets
+              Projects
             </h2>
             <p className="mt-4 text-zinc-400">
-              Some of the datasets I created over the past few years. Find more
-              on my{" "}
+              Some of the open source projects I worked on over the years. You
+              can find more on my github{" "}
               <a
                 className="underline"
                 target="_blank"
-                href="https://www.kaggle.com/praneshmukhopadhyay"
+                href="https://github.com/Mukhopadhyay"
               >
-                Kaggle
+                @Mukhopadhyay
               </a>
             </p>
           </div>
@@ -48,10 +43,16 @@ const DatasetsPage: React.FC<PageProps> = () => {
           {/* Highlighted dataset */}
           <div className="grid grid-cols-1 gap-8 mx-auto lg:grid-cols-2 ">
             <Card>
-              <a href={highlight.kaggleUrl} target="_blank">
+              <a href={highlight.url} target="_blank">
                 <article className="relative w-full h-full p-4 md:p-8">
                   <div className="flex items-center justify-between gap-2">
-                    <div className="text-xs text-zinc-100">"Mar 28, 2023"</div>
+                    {highlight.publishedDate !== undefined ? (
+                      <div className="text-xs text-zinc-100">
+                        {highlight.publishedDate}
+                      </div>
+                    ) : (
+                      <></>
+                    )}
                     <span className="flex items-center gap-1 text-xs text-zinc-500">
                       {highlight.ratingType === "upvotes" ? (
                         <MoveUp className="w-4 h-4" />
@@ -76,6 +77,20 @@ const DatasetsPage: React.FC<PageProps> = () => {
                       Read more <span aria-hidden="true">&rarr;</span>
                     </p>
                   </div>
+
+                  {highlight.documentation?.url !== undefined ? (
+                    <div className="absolute bottom-4 right-8 md:bottom-8">
+                      <a
+                        className="hidden text-zinc-200 hover:text-zinc-50 lg:block"
+                        href={highlight.documentation.url}
+                        target="_blank"
+                      >
+                        {highlight.documentation.platform}
+                      </a>
+                    </div>
+                  ) : (
+                    <></>
+                  )}
                 </article>
               </a>
             </Card>
@@ -83,7 +98,7 @@ const DatasetsPage: React.FC<PageProps> = () => {
             <div className="flex flex-col w-full gap-8 mx-auto border-t border-gray-900/10 lg:mx-0 lg:border-t-0 ">
               {[top2, top3].map((project) => (
                 <Card key={project.name}>
-                  <DatasetCard data={project} />
+                  <ProjectCard data={project} />
                 </Card>
               ))}
             </div>
@@ -91,8 +106,20 @@ const DatasetsPage: React.FC<PageProps> = () => {
           <div className="hidden w-full h-px md:block bg-zinc-800" />
 
           {/* Other datasets */}
-          {/* <div className="grid grid-cols-1 gap-4 mx-auto lg:mx-0 md:grid-cols-3">
-            <div className="grid grid-c ols-1 gap-4">
+          <div className="grid grid-cols-1 gap-4 mx-auto lg:mx-0 md:grid-cols-3">
+            {otherProjects.map((project) => (
+              <Card key={project.name}>
+                <ProjectCard data={project} />
+              </Card>
+            ))}
+            {/* {otherProjects.map((project) => {
+              <div className="grid grid-c ols-1 gap-4">
+                <Card>
+                  <ProjectCard />
+                </Card>
+              </div>;
+            })} */}
+            {/* <div className="grid grid-cols-1 gap-4">
               <Card>
                 <DatasetCard />
               </Card>
@@ -101,17 +128,12 @@ const DatasetsPage: React.FC<PageProps> = () => {
               <Card>
                 <DatasetCard />
               </Card>
-            </div>
-            <div className="grid grid-cols-1 gap-4">
-              <Card>
-                <DatasetCard />
-              </Card>
-            </div>
-          </div> */}
+            </div> */}
+          </div>
         </div>
       </div>
     </div>
   );
 };
 
-export default DatasetsPage;
+export default ProjectPage;
