@@ -5,17 +5,17 @@ export default function Footer() {
   const github = resume.basics?.links?.github || "#";
 
   return (
-    <footer className="w-full border-t border-white/6 py-8">
-      <div className="max-w-3xl mx-auto text-sm text-white/60">
+    <footer className="w-full border-t border-border py-8">
+      <div className="max-w-3xl mx-auto px-6 text-sm text-foreground/60">
         <div className="flex gap-4 mb-4">
-          <a href="/rss.xml" className="hover:text-white">
+          <a href="/rss.xml" className="hover:text-foreground">
             ↗ rss
           </a>
           <a
             href={github}
             target="_blank"
             rel="noreferrer"
-            className="hover:text-white"
+            className="hover:text-foreground"
           >
             ↗ github
           </a>
@@ -23,7 +23,7 @@ export default function Footer() {
             href={github}
             target="_blank"
             rel="noreferrer"
-            className="hover:text-white"
+            className="hover:text-foreground"
           >
             ↗ view source
           </a>

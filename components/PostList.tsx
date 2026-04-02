@@ -11,12 +11,12 @@ export default function PostList({ posts }: { posts: Post[] }) {
       {posts.map((p, i) => (
         <li key={i}>
           <a href={p.link || "#"} className="group block">
-            <div className="text-sm text-zinc-400">{p.date}</div>
-            <div className="text-lg font-medium text-white group-hover:underline">
+            <div className="text-sm text-foreground/60">{p.date}</div>
+            <div className="text-lg font-medium text-foreground group-hover:underline">
               {p.title}
             </div>
             {p.description && (
-              <div className="text-sm text-zinc-400">{p.description}</div>
+              <div className="text-sm text-foreground/60">{p.description}</div>
             )}
           </a>
         </li>

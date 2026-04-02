@@ -10,9 +10,9 @@ export default function ResumeCard({ basics }: { basics: Basics }) {
   return (
     <section className="mb-6">
       <h1 className="text-3xl font-bold tracking-tight">{basics.name}</h1>
-      <p className="text-zinc-300 mt-3 max-w-prose">{basics.summary}</p>
+      <p className="text-foreground/60 mt-3 max-w-prose">{basics.summary}</p>
 
-      <div className="mt-4 text-sm text-white/70 flex flex-col sm:flex-row sm:items-center gap-2">
+      <div className="mt-4 text-sm text-foreground/70 flex flex-col sm:flex-row sm:items-center gap-2">
         <div>{basics.location}</div>
         <a href={`mailto:${basics.email}`} className="hover:underline">
           {basics.email}
@@ -25,7 +25,7 @@ export default function ResumeCard({ basics }: { basics: Basics }) {
                 href={v}
                 target="_blank"
                 rel="noreferrer"
-                className="capitalize hover:text-white/90"
+                className="capitalize hover:text-foreground"
               >
                 {k}
               </a>

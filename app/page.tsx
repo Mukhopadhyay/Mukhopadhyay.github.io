@@ -1,5 +1,6 @@
 import ResumeCard from "../components/ResumeCard";
 import PostList from "../components/PostList";
+import Reveal from "../components/Reveal";
 import resume from "../data/resume.json";
 
 export default function Home() {
@@ -24,10 +25,17 @@ export default function Home() {
 
   return (
     <div className="flex flex-col gap-8">
-      <ResumeCard basics={basics} />
+      <Reveal>
+        <ResumeCard basics={basics} />
+      </Reveal>
 
-      <h2 className="text-2xl font-semibold">Recent</h2>
-      <PostList posts={posts} />
+      <Reveal delay={80}>
+        <h2 className="text-2xl font-semibold">Recent</h2>
+      </Reveal>
+
+      <Reveal delay={120}>
+        <PostList posts={posts} />
+      </Reveal>
     </div>
   );
 }
