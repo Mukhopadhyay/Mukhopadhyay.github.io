@@ -12,17 +12,15 @@ import rehypeSlug from "rehype-slug";
 import rehypeStringify from "rehype-stringify";
 import { visit } from "unist-util-visit";
 
-const POSTS_DIR_CANDIDATES = [
-  path.join(process.cwd(), "blogs"),
-  path.join(process.cwd(), "data", "blogs"),
-];
+const POSTS_DIR_CANDIDATES = ["blogs", "data/blogs"];
 
-const POSTS_DIR = (() => {
-  for (const d of POSTS_DIR_CANDIDATES) {
+function resolvePostsDir(): string {
+  for (const rel of POSTS_DIR_CANDIDATES) {
+    const d = path.join(process.cwd(), rel);
     if (fs.existsSync(d)) return d;
   }
   return path.join(process.cwd(), "blogs");
-})();
+}
 
 type Frontmatter = {
   title?: string;
@@ -224,6 +222,7 @@ type PostMeta = {
 };
 
 export function getAllPosts(): PostMeta[] {
+  const POSTS_DIR = resolvePostsDir();
   if (!fs.existsSync(POSTS_DIR)) return [];
   const files = fs.readdirSync(POSTS_DIR).filter((f) => f.endsWith(".md"));
   const posts = files.map((file) => {
@@ -248,6 +247,7 @@ export function getAllPosts(): PostMeta[] {
 export async function getPostBySlug(slug?: string) {
   if (!slug || typeof slug !== "string") return null;
   const slugStr = String(slug);
+  const POSTS_DIR = resolvePostsDir();
   let filePath = path.join(POSTS_DIR, `${slugStr}.md`);
   console.log("File path: ", filePath);
 
