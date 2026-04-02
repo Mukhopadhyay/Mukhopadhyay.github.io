@@ -12,7 +12,17 @@ import rehypeSlug from "rehype-slug";
 import rehypeStringify from "rehype-stringify";
 import { visit } from "unist-util-visit";
 
-const POSTS_DIR = path.join(process.cwd(), "blogs");
+const POSTS_DIR_CANDIDATES = [
+  path.join(process.cwd(), "blogs"),
+  path.join(process.cwd(), "data", "blogs"),
+];
+
+const POSTS_DIR = (() => {
+  for (const d of POSTS_DIR_CANDIDATES) {
+    if (fs.existsSync(d)) return d;
+  }
+  return path.join(process.cwd(), "blogs");
+})();
 
 type Frontmatter = {
   title?: string;
