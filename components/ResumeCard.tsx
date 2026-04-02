@@ -46,7 +46,7 @@ export default function ResumeCard({ basics }: { basics: Basics }) {
       </div>
       {/* Download my resume section */}
       <div
-        className="text-sm text-foreground/70 flex items-center gap-1 mt-4 cursor-pointer hover:text-foreground hover:underline"
+        className="text-sm text-foreground/70 flex items-center gap-1 mt-4 cursor-pointer hover:text-foreground underline transition duration-300"
         onClick={() => {
           const pdfUrl = "/Resume-Pranesh.M.pdf";
           const link = document.createElement("a");

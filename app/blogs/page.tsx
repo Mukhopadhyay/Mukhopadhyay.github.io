@@ -17,29 +17,35 @@ export default function BlogsPage() {
         </p>
       </Reveal>
 
-      <ul className="flex flex-col gap-4">
-        {posts.map((p, i) => (
-          <Reveal key={p.slug} delay={i * 50}>
-            <li>
-              <Link href={`/blogs/${p.slug}`} className="group block">
-                <div className="text-lg font-medium text-foreground group-hover:underline">
-                  {p.title}
-                </div>
-                {p.description && (
-                  <div className="text-sm text-foreground/60">
-                    {p.description}
+      {posts.length === 0 ? (
+        <Reveal delay={120}>
+          <div className="text-foreground/60 text-xl">Coming Soon</div>
+        </Reveal>
+      ) : (
+        <ul className="flex flex-col gap-4">
+          {posts.map((p, i) => (
+            <Reveal key={p.slug} delay={i * 50}>
+              <li>
+                <Link href={`/blogs/${p.slug}`} className="group block">
+                  <div className="text-lg font-medium text-foreground group-hover:underline">
+                    {p.title}
                   </div>
-                )}
-                {p.date && (
-                  <div className="text-sm text-foreground/60 mt-1">
-                    {new Date(p.date).toLocaleDateString()}
-                  </div>
-                )}
-              </Link>
-            </li>
-          </Reveal>
-        ))}
-      </ul>
+                  {p.description && (
+                    <div className="text-sm text-foreground/60">
+                      {p.description}
+                    </div>
+                  )}
+                  {p.date && (
+                    <div className="text-sm text-foreground/60 mt-1">
+                      {new Date(p.date).toLocaleDateString()}
+                    </div>
+                  )}
+                </Link>
+              </li>
+            </Reveal>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }
