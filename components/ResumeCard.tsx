@@ -14,10 +14,16 @@ export default function ResumeCard({ basics }: { basics: Basics }) {
 
       <div className="mt-4 text-sm text-foreground/70 flex flex-col sm:flex-row sm:items-center gap-2">
         <div>{basics.location}</div>
+        <p>&bull;</p>
         <a href={`mailto:${basics.email}`} className="hover:underline">
           {basics.email}
         </a>
+
         <div className="flex gap-3 ml-0 sm:ml-4">
+          <div className="hidden sm:block">
+            <p>|</p>
+          </div>
+
           {basics.links &&
             Object.entries(basics.links).map(([k, v]) => (
               <a

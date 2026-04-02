@@ -1,0 +1,109 @@
+[
+  {
+    "company": "Boxwish Media LLP / Spiritzone",
+    "role": "Consultant - Data Engineering",
+    "start_date": "2021-12",
+    "end_date": "Present",
+    "location": "Mumbai, India",
+    "projects": [
+      {
+        "name": "Real-time Order Assignment & Dispatch System",
+        "tech_stack": [
+          "Python",
+          "FastAPI",
+          "Celery",
+          "Redis",
+          "Docker",
+          "PostgreSQL"
+        ],
+        "highlights": [
+          "Designed asynchronous real-time order assignment system for dynamic batching and delivery partner allocation",
+          "Handled 30+ orders per minute per instance with real-time agent discovery",
+          "Built Celery + Redis workflows with centralized logging and production-grade reliability"
+        ]
+      },
+      {
+        "name": "Order ETA Prediction Service",
+        "tech_stack": [
+          "Python",
+          "FastAPI",
+          "TensorFlow",
+          "Pandas",
+          "NumPy",
+          "MLflow",
+          "Redis"
+        ],
+        "highlights": [
+          "Built stateless ML service for real-time delivery ETA prediction",
+          "Designed feature pipelines using historical and real-time signals",
+          "Improved ETA accuracy by 75% using geofence-based caching"
+        ]
+      },
+      {
+        "name": "Agent-based SKU Onboarding & Validation Pipeline",
+        "tech_stack": [
+          "Python",
+          "LangChain",
+          "FastAPI",
+          "PostgreSQL",
+          "Redis",
+          "Docker"
+        ],
+        "highlights": [
+          "Built LLM-based agent pipeline for SKU onboarding and validation",
+          "Added observability across validation stages",
+          "Reduced manual effort by 16–20 hours/week"
+        ]
+      },
+      {
+        "name": "Platform Reliability & Engineering Practices",
+        "highlights": [
+          "Introduced centralized logging and structured error reporting",
+          "Achieved 80–90%+ test coverage using Pytest",
+          "Performed load testing using Locust"
+        ]
+      }
+    ]
+  },
+  {
+    "company": "Quosphere Infosolutions Pvt. Ltd.",
+    "role": "Junior Data Scientist",
+    "start_date": "2020-07",
+    "end_date": "2021-12",
+    "location": "Navi Mumbai, India",
+    "projects": [
+      {
+        "name": "Spiritzone Product Recommendation System",
+        "tech_stack": [
+          "Python",
+          "Flask",
+          "Collaborative Filtering",
+          "Content-Based Models"
+        ],
+        "highlights": [
+          "Built hybrid recommendation system using user behavior",
+          "Implemented incremental training pipelines",
+          "Exposed recommendations via stateless services"
+        ]
+      },
+      {
+        "name": "Market Basket Analysis Service",
+        "tech_stack": ["Python", "FastAPI", "Apriori", "FP-Growth", "Docker"],
+        "highlights": [
+          "Developed frequent item association service",
+          "Automated daily retraining and deployment",
+          "Achieved 90%+ test coverage"
+        ]
+      },
+      {
+        "name": "Clickstream Data Analytics Pipeline",
+        "tech_stack": ["Azure Data Explorer", "Python", "Grafana"],
+        "highlights": [
+          "Built scalable ingestion pipeline for event data",
+          "Implemented scheduling and monitoring",
+          "Handled variable data rates without data loss"
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,41 @@
+{
+  "Languages": ["Python", "JavaScript", "TypeScript", "C++"],
+  "Backend": [
+    "FastAPI",
+    "Flask",
+    "REST APIs",
+    "Celery",
+    "Pydantic",
+    "Async Processing"
+  ],
+  "DevOps": [
+    "Docker",
+    "Kubernetes",
+    "GitHub Actions",
+    "Azure Pipelines",
+    "Grafana"
+  ],
+  "Databases": [
+    "PostgreSQL",
+    "MongoDB",
+    "MySQL",
+    "Redis",
+    "Pinecone",
+    "Qdrant",
+    "pgvector"
+  ],
+  "ML": ["TensorFlow", "PyTorch", "scikit-learn", "Pandas", "NumPy"],
+  "MLOps": [
+    "MLflow",
+    "Weights & Biases",
+    "Experiment Tracking",
+    "Model Versioning"
+  ],
+  "LLM": [
+    "LangChain",
+    "LangGraph",
+    "PydanticAI",
+    "RAG Systems",
+    "Agent Workflows"
+  ]
+}
