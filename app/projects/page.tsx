@@ -3,6 +3,7 @@ import data from "../../data/projects.json";
 import Reveal from "../../components/Reveal";
 import { Project } from "@/types/types";
 import { Badge } from "@/components/ui/badge";
+import GithubIcon from "@/components/icons/gh";
 
 export default function ProjectsPage() {
   const projects: Project[] = data || [];
@@ -41,15 +42,19 @@ export default function ProjectsPage() {
             {p.links && p.links.length > 0 && (
               <div className="text-sm text-foreground/60 mt-2 flex flex-row gap-2">
                 {p.links.map((link, idx) => (
-                  <a
-                    key={idx}
-                    href={link.url}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="hover:underline"
-                  >
-                    {link.type}
-                  </a>
+                  <>
+                    {/* Github icon if link.type == 'github' */}
+                    {/* {link.type === "github" && <GithubIcon />} */}
+                    <a
+                      key={idx}
+                      href={link.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="hover:underline"
+                    >
+                      {link.type}
+                    </a>
+                  </>
                 ))}
               </div>
             )}

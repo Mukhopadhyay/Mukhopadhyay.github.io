@@ -31,7 +31,7 @@ export default function ExperiencePage() {
       </Reveal>
       {experiences.map((exp, expIdx) => (
         <Reveal key={expIdx} delay={expIdx * 60}>
-          <article className="">
+          <article className="border-b-2 pb-6">
             <h2 className="text-lg font-semibold">{exp.company}</h2>
             <p className="text-foreground/80 font-medium">{exp.role}</p>
             <div className="text-sm text-foreground/60">

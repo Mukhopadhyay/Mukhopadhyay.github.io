@@ -1,3 +1,7 @@
+"use client";
+
+import { FileText } from "lucide-react";
+
 type Basics = {
   name?: string;
   location?: string;
@@ -39,6 +43,22 @@ export default function ResumeCard({ basics }: { basics: Basics }) {
               </a>
             ))}
         </div>
+      </div>
+      {/* Download my resume section */}
+      <div
+        className="text-sm text-foreground/70 flex items-center gap-1 mt-4 cursor-pointer hover:text-foreground hover:underline"
+        onClick={() => {
+          const pdfUrl = "/Resume-Pranesh.M.pdf";
+          const link = document.createElement("a");
+          link.href = pdfUrl;
+          link.download = "Resume-Pranesh.M.pdf";
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        }}
+      >
+        <FileText size={15} />
+        <div>Download Resume</div>
       </div>
     </section>
   );
