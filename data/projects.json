@@ -2,7 +2,7 @@
   {
     "name": "Pyfake",
     "description": "A Flexible and Extensible fake data generator based on Pydantic models.",
-    "tech_stack": ["Python", "Pydantic", "GitHub Actions", "Pytest"],
+    "tech_stack": ["Pydantic", "GitHub Actions", "Pytest"],
     "highlights": [
       "Schema aware fake data generator with support for custom providers",
       "Published on PyPI with CI-backed testing",
@@ -26,7 +26,7 @@
   {
     "name": "Monolg",
     "description": "Centralized logging library for Python",
-    "tech_stack": ["Python", "MongoDB", "GitHub Actions", "Pytest"],
+    "tech_stack": ["MongoDB", "GitHub Actions", "Pytest"],
     "highlights": [
       "Plug-and-play structured logging library",
       "Published on PyPI with CI-backed testing",
