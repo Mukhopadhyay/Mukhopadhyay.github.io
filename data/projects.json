@@ -1,0 +1,64 @@
+[
+  {
+    "name": "Pyfake",
+    "description": "A Flexible and Extensible fake data generator based on Pydantic models.",
+    "tech_stack": ["Python", "Pydantic", "GitHub Actions", "Pytest"],
+    "highlights": [
+      "Schema aware fake data generator with support for custom providers",
+      "Published on PyPI with CI-backed testing",
+      "Easily extensible with custom providers and generators"
+    ],
+    "links": [
+      {
+        "type": "github",
+        "url": "https://github.com/Mukhopadhyay/pyfake"
+      },
+      {
+        "type": "docs",
+        "url": "https://mukhopadhyay.github.io/pyfake/"
+      },
+      {
+        "type": "pypi",
+        "url": "https://pypi.org/project/pyfake/"
+      }
+    ]
+  },
+  {
+    "name": "Monolg",
+    "description": "Centralized logging library for Python",
+    "tech_stack": ["Python", "MongoDB", "GitHub Actions", "Pytest"],
+    "highlights": [
+      "Plug-and-play structured logging library",
+      "Published on PyPI with CI-backed testing",
+      "Documented on ReadTheDocs"
+    ],
+    "links": [
+      {
+        "type": "github",
+        "url": "https://github.com/Mukhopadhyay/monolg"
+      },
+      {
+        "type": "docs",
+        "url": "https://monolg.readthedocs.io/en/latest/"
+      },
+      {
+        "type": "pypi",
+        "url": "https://pypi.org/project/monolg/"
+      }
+    ]
+  },
+  {
+    "name": "YouTube Subtitle Dataset",
+    "description": "Dataset of 2,500+ YouTube subtitles with annotations",
+    "highlights": [
+      "Curated dataset for NLP and classification use cases",
+      "Published on Kaggle"
+    ],
+    "links": [
+      {
+        "type": "kaggle",
+        "url": "https://kaggle.com/datasets/praneshmukhopadhyay/youtubers-saying-things"
+      }
+    ]
+  }
+]
