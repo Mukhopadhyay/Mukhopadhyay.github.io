@@ -25,12 +25,12 @@
       {
         "name": "Order ETA Prediction Service",
         "tech_stack": [
-          "Python",
           "FastAPI",
           "TensorFlow",
-          "Pandas",
-          "NumPy",
           "MLflow",
+          "Pandas",
+          "Python",
+          "NumPy",
           "Redis"
         ],
         "highlights": [
@@ -42,11 +42,11 @@
       {
         "name": "Agent-based SKU Onboarding & Validation Pipeline",
         "tech_stack": [
-          "Python",
           "LangChain",
           "FastAPI",
-          "PostgreSQL",
           "Redis",
+          "PostgreSQL",
+          "Python",
           "Docker"
         ],
         "highlights": [

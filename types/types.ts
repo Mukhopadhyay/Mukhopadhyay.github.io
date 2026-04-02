@@ -9,34 +9,37 @@ export type PersonalInfo = {
 };
 
 // Experiences
-export type Project = {
+export interface Project {
   name: string;
-  tech_stack: string[];
-  highlights: string[];
-};
+  description?: string;
+  tech_stack?: string[];
+  highlights?: string[];
+  links?: Link[];
+}
 
-export type Experience = {
+export interface Experience {
   company: string;
   role: string;
   start_date: string;
   end_date: string;
   location: string;
   projects: Project[];
-};
+}
 
 // Projects
 export type Link = {
-  type: "github" | "docs" | "pypi" | "kaggle" | "linkedin";
+  // type: "github" | "docs" | "pypi" | "kaggle" | "linkedin";
+  type: string;
   url: string;
 };
 
-export type Projects = {
-  name: string;
-  description: string;
-  tech_stack: string[];
-  highlights: string[];
-  links: Link[];
-};
+// export type Projects = {
+//   name: string;
+//   description: string;
+//   tech_stack: string[];
+//   highlights: string[];
+//   links: Link[];
+// };
 
 // Education
 export type Education = {

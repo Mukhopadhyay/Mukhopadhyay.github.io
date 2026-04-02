@@ -14,7 +14,9 @@ export default function ResumeCard({ basics }: { basics: Basics }) {
 
       <div className="mt-4 text-sm text-foreground/70 flex flex-col sm:flex-row sm:items-center gap-2">
         <div>{basics.location}</div>
-        <p>&bull;</p>
+        <div className="hidden sm:block">
+          <p>&bull;</p>
+        </div>
         <a href={`mailto:${basics.email}`} className="hover:underline">
           {basics.email}
         </a>
