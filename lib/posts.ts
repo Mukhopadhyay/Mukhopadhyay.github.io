@@ -249,6 +249,7 @@ export async function getPostBySlug(slug?: string) {
   if (!slug || typeof slug !== "string") return null;
   const slugStr = String(slug);
   let filePath = path.join(POSTS_DIR, `${slugStr}.md`);
+  console.log("File path: ", filePath);
 
   // fallback: try decoded slug and case-insensitive match if direct file missing
   if (!fs.existsSync(filePath)) {

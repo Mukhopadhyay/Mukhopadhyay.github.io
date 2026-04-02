@@ -28,8 +28,11 @@ export function generateStaticParams(): { slug: string }[] {
 }
 
 export default async function PostPage({ params }: Props) {
-  const { slug } = params;
-  const post = await getPostBySlug(slug);
+  // `params` can be a thenable/proxy in dev/streaming; await to ensure it's resolved
+  const resolvedParams: any = await Promise.resolve(params as any);
+  const slug = resolvedParams?.slug ?? null;
+  console.log("Resolved params:", resolvedParams, "slug:", slug);
+  const post = await getPostBySlug(typeof slug === "string" ? slug : undefined);
   if (!post) {
     return <div>Post not found</div>;
   }
