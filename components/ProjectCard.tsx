@@ -11,13 +11,21 @@ const ProjectCard = ({
   recent?: boolean;
 }) => {
   return (
-    <article className="border-b-2 py-6">
+    <article className="border-b-2 pb-4 pt-2">
       <div className="flex justify-between items-center">
-        <h2 className="text-lg font-semibold cursor-pointer hover:underline">
+        <a
+          className="text-lg font-semibold cursor-pointer hover:underline"
+          href={
+            project.links && project.links.length > 0
+              ? project.links[0].url
+              : "#"
+          }
+          target="_blank"
+        >
           {project.name}
-        </h2>
+        </a>
         {recent && (
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-1 text-foreground/60">
             <Code size={14} />
             <p className="text-xs">Project</p>
           </div>

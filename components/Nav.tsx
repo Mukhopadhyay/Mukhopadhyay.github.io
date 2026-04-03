@@ -4,8 +4,8 @@ import ThemeToggle from "./ThemeToggle";
 export default function Nav() {
   const links = [
     { href: "/", label: "home" },
-    { href: "/experience", label: "experience" },
     { href: "/projects", label: "projects" },
+    { href: "/experience", label: "experience" },
     { href: "/blogs", label: "blogs" },
   ];
 

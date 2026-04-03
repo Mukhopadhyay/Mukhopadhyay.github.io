@@ -5,13 +5,13 @@ import Reveal from "../components/Reveal";
 // import resume from "../data/resume.json";
 import projectsData from "../data/projects.json";
 import ProjectCard from "@/components/ProjectCard";
-import { getAllPosts } from "@/lib/posts";
+import { getAllPosts, PostMeta } from "@/lib/posts";
 import BlogCard from "@/components/BlogCard";
 import HomeClient from "@/components/HomeClient";
 
 export default function Home() {
   const projects: Project[] = projectsData || [];
-  const posts = getAllPosts();
+  const posts: PostMeta[] = getAllPosts();
 
   return (
     <div className="flex flex-col gap-8">

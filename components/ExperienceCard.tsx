@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Experience } from "@/types/types";
 import { Badge } from "@/components/ui/badge";
 import { EyeClosed } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface Props {
   exp: Experience;
@@ -38,8 +39,15 @@ const ExperienceCard = ({ exp }: Props) => {
           const isHighlightsExpanded = !!expandedHighlights[hKey];
 
           return (
-            <div key={projIdx} className="mt-2">
-              <div className="font-medium">{p.name}</div>
+            <div
+              key={projIdx}
+              className={cn(
+                "py-3 ",
+                projIdx !== exp.projects!.length - 1 &&
+                  "border-b-2 border-dashed",
+              )}
+            >
+              <div className="font-medium text-base">{p.name}</div>
 
               {p.tech_stack && (
                 <div className="flex gap-2 mt-1 items-center">

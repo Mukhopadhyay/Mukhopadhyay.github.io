@@ -220,6 +220,7 @@ type PostMeta = {
   date: string;
   description: string;
 };
+export type { PostMeta };
 
 export function getAllPosts(): PostMeta[] {
   const POSTS_DIR = resolvePostsDir();
