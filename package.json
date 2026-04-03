@@ -12,6 +12,7 @@
     "@tailwindcss/typography": "^0.5.19",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "fs": "^0.0.1-security",
     "highlight.js": "^11.11.1",
     "katex": "^0.16.44",
     "lucide-react": "^1.7.0",

@@ -1,7 +1,6 @@
 import BlogCard from "@/components/BlogCard";
 import Reveal from "../../components/Reveal";
 import { getAllPosts } from "../../lib/posts";
-import Link from "next/link";
 
 export default function BlogsPage() {
   const posts = getAllPosts();

@@ -1,5 +1,3 @@
-"use client";
-
 import { Project } from "@/types/types";
 import ResumeCard from "../components/ResumeCard";
 // import PostList from "../components/PostList";
@@ -9,6 +7,7 @@ import projectsData from "../data/projects.json";
 import ProjectCard from "@/components/ProjectCard";
 import { getAllPosts } from "@/lib/posts";
 import BlogCard from "@/components/BlogCard";
+import HomeClient from "@/components/HomeClient";
 
 export default function Home() {
   const projects: Project[] = projectsData || [];
@@ -20,7 +19,9 @@ export default function Home() {
         <ResumeCard />
       </Reveal>
 
-      <Reveal delay={80}>
+      <HomeClient projects={projects} posts={posts} />
+
+      {/* <Reveal delay={80}>
         <h2 className="text-2xl font-semibold">Recent</h2>
       </Reveal>
 
@@ -31,7 +32,7 @@ export default function Home() {
         {posts.slice(0, 2).map((p, idx) => (
           <BlogCard key={idx} post={p} />
         ))}
-      </Reveal>
+      </Reveal> */}
     </div>
   );
 }

@@ -16,10 +16,12 @@ const ProjectCard = ({
         <h2 className="text-lg font-semibold cursor-pointer hover:underline">
           {project.name}
         </h2>
-        <div className="flex items-center gap-1">
-          <Code size={14} />
-          <p className="text-xs">Project</p>
-        </div>
+        {recent && (
+          <div className="flex items-center gap-1">
+            <Code size={14} />
+            <p className="text-xs">Project</p>
+          </div>
+        )}
       </div>
       {project.description && (
         <div className="text-sm text-foreground/60">{project.description}</div>
