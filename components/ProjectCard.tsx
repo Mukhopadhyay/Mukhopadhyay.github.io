@@ -1,14 +1,26 @@
-import { BookOpen, Box, Table } from "lucide-react";
+import { BookOpen, Box, Code, Table } from "lucide-react";
 import { Badge } from "./ui/badge";
 import GithubIcon from "./icons/gh";
 import { Project } from "@/types/types";
 
-const ProjectCard = ({ project }: { project: Project }) => {
+const ProjectCard = ({
+  project,
+  recent = false,
+}: {
+  project: Project;
+  recent?: boolean;
+}) => {
   return (
-    <article className="border-b-2 pb-6">
-      <h2 className="text-lg font-semibold cursor-pointer hover:underline">
-        {project.name}
-      </h2>
+    <article className="border-b-2 py-6">
+      <div className="flex justify-between items-center">
+        <h2 className="text-lg font-semibold cursor-pointer hover:underline">
+          {project.name}
+        </h2>
+        <div className="flex items-center gap-1">
+          <Code size={14} />
+          <p className="text-xs">Project</p>
+        </div>
+      </div>
       {project.description && (
         <div className="text-sm text-foreground/60">{project.description}</div>
       )}
@@ -48,18 +60,20 @@ const ProjectCard = ({ project }: { project: Project }) => {
       )}
 
       {/* Highlights */}
-      <div>
-        {project.highlights && project.highlights.length > 0 && (
-          <div className="mt-2 ml-4">
-            <h3 className="font-medium">Highlights:</h3>
-            <ul className="list-disc list-inside mt-1 text-sm text-foreground/60">
-              {project.highlights.map((h, idx) => (
-                <li key={idx}>{h}</li>
-              ))}
-            </ul>
-          </div>
-        )}
-      </div>
+      {recent === false && (
+        <div>
+          {project.highlights && project.highlights.length > 0 && (
+            <div className="mt-2 ml-4">
+              <h3 className="font-medium">Highlights:</h3>
+              <ul className="list-disc list-inside mt-1 text-sm text-foreground/60">
+                {project.highlights.map((h, idx) => (
+                  <li key={idx}>{h}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+      )}
     </article>
   );
 };
