@@ -1,3 +1,4 @@
+import BlogCard from "@/components/BlogCard";
 import Reveal from "../../components/Reveal";
 import { getAllPosts } from "../../lib/posts";
 import Link from "next/link";
@@ -26,21 +27,7 @@ export default function BlogsPage() {
           {posts.map((p, i) => (
             <Reveal key={p.slug} delay={i * 50}>
               <li>
-                <Link href={`/blogs/${p.slug}`} className="group block">
-                  <div className="text-lg font-medium text-foreground group-hover:underline">
-                    {p.title}
-                  </div>
-                  {p.description && (
-                    <div className="text-sm text-foreground/60">
-                      {p.description}
-                    </div>
-                  )}
-                  {p.date && (
-                    <div className="text-sm text-foreground/60 mt-1">
-                      {new Date(p.date).toLocaleDateString()}
-                    </div>
-                  )}
-                </Link>
+                <BlogCard post={p} />
               </li>
             </Reveal>
           ))}
