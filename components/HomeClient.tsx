@@ -2,15 +2,16 @@
 
 import Reveal from "./Reveal";
 import ProjectCard from "./ProjectCard";
-import BlogCard, { BlogCardProps } from "./BlogCard";
+import BlogCard from "./BlogCard";
 import { Project } from "@/types/types";
+import { PostMeta } from "@/lib/posts";
 
 export default function HomeClient({
   projects,
   posts,
 }: {
   projects: Project[];
-  posts: BlogCardProps[];
+  posts: PostMeta[];
 }) {
   return (
     <>
@@ -22,7 +23,7 @@ export default function HomeClient({
         {projects.slice(0, 2).map((p: Project, idx: number) => (
           <ProjectCard key={idx} project={p} recent />
         ))}
-        {posts.slice(0, 2).map((p: BlogCardProps, idx: number) => (
+        {posts.slice(0, 2).map((p: PostMeta, idx: number) => (
           <BlogCard key={idx} post={p} recent />
         ))}
       </Reveal>
