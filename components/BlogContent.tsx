@@ -47,7 +47,7 @@ export default function BlogContent({ html }: { html: string }) {
   return (
     <div
       ref={ref}
-      className="prose prose-neutral dark:prose-invert max-w-none"
+      className="prose post-prose"
       dangerouslySetInnerHTML={{ __html: html }}
     />
   );

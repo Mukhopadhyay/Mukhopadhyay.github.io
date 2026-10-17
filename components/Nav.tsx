@@ -1,30 +1,24 @@
 import Link from "next/link";
 import ThemeToggle from "./ThemeToggle";
+import CommandPaletteTrigger from "./CommandPaletteTrigger";
+import NavLinks from "./NavLinks";
 
 export default function Nav() {
-  const links = [
-    { href: "/", label: "home" },
-    { href: "/projects", label: "projects" },
-    // { href: "/experience", label: "experience" },
-    // { href: "/blogs", label: "blogs" },
-  ];
-
   return (
-    <header className="w-full border-b border-border">
-      <div className="max-w-3xl mx-auto px-6 flex items-center justify-between gap-6 py-4 text-sm">
-        <nav className="flex gap-6">
-          {links.map((l) => (
-            <Link
-              key={l.href}
-              href={l.href}
-              className="capitalize text-foreground/80 hover:text-foreground"
-            >
-              {l.label}
-            </Link>
-          ))}
-        </nav>
-        <div>
-          <ThemeToggle />
+    <header className="w-full">
+      <div className="mx-auto flex max-w-[46rem] items-center justify-between gap-4 px-5 pt-4">
+        <Link
+          href="/"
+          className="-ml-1 inline-flex min-h-10 items-center whitespace-nowrap px-1 text-sm font-medium tracking-tight"
+        >
+          Pranesh<span className="hidden sm:inline">&nbsp;Mukhopadhyay</span>
+        </Link>
+        <div className="flex items-center gap-0.5 sm:gap-3">
+          <NavLinks />
+          <div className="flex items-center">
+            <CommandPaletteTrigger />
+            <ThemeToggle />
+          </div>
         </div>
       </div>
     </header>
