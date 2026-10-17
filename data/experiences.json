@@ -5,6 +5,7 @@
     "start_date": "2021-12",
     "end_date": "Present",
     "location": "Mumbai, India",
+    "impact": "Built the real-time order dispatch system (30+ orders/min per instance) and an ETA prediction service; an LLM agent pipeline cut SKU onboarding work by 16–20 hrs/week.",
     "projects": [
       {
         "name": "Real-time Order Assignment & Dispatch System",
@@ -71,6 +72,7 @@
     "start_date": "2020-07",
     "end_date": "2021-12",
     "location": "Navi Mumbai, India",
+    "impact": "Shipped recommendation and market-basket services with automated daily retraining and 90%+ test coverage.",
     "projects": [
       {
         "name": "Spiritzone Product Recommendation System",
@@ -88,7 +90,13 @@
       },
       {
         "name": "Market Basket Analysis Service",
-        "tech_stack": ["Python", "FastAPI", "Apriori", "FP-Growth", "Docker"],
+        "tech_stack": [
+          "Python",
+          "FastAPI",
+          "Apriori",
+          "FP-Growth",
+          "Docker"
+        ],
         "highlights": [
           "Developed frequent item association service",
           "Automated daily retraining and deployment",
@@ -97,7 +105,11 @@
       },
       {
         "name": "Clickstream Data Analytics Pipeline",
-        "tech_stack": ["Azure Data Explorer", "Python", "Grafana"],
+        "tech_stack": [
+          "Azure Data Explorer",
+          "Python",
+          "Grafana"
+        ],
         "highlights": [
           "Built scalable ingestion pipeline for event data",
           "Implemented scheduling and monitoring",

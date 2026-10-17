@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
+import CommandPalette from "../components/CommandPalette";
+import MotionProvider from "../components/MotionProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,9 +17,16 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Pranesh Mukhopadhyay — Portfolio",
-  description: "Personal portfolio and blog",
+  title: {
+    default: "Pranesh Mukhopadhyay — Backend & applied ML engineer",
+    template: "%s · Pranesh Mukhopadhyay",
+  },
+  description:
+    "Backend and applied ML engineer in Mumbai. Production Python services, real-time systems and ML-powered APIs.",
 };
+
+// Sets the theme class before first paint so there is no light/dark flash.
+const themeScript = `(function(){try{var s=localStorage.getItem("theme");var d=s?s==="dark":window.matchMedia("(prefers-color-scheme: dark)").matches;if(d)document.documentElement.classList.add("dark");}catch(e){}})();`;
 
 export default function RootLayout({
   children,
@@ -27,16 +36,30 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased select-none`}
+      className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full" suppressHydrationWarning={true}>
-        <div className="min-h-screen flex flex-col">
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
+      <body>
+        <MotionProvider>
+          <a
+            href="#content"
+            className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-background focus:px-3 focus:py-2 focus:text-sm"
+          >
+            Skip to content
+          </a>
           <Nav />
-          <main className="flex-1 w-full max-w-3xl mx-auto px-6 py-12">
+          <main
+            id="content"
+            className="mx-auto w-full max-w-[46rem] px-5 pb-24 pt-10 sm:pt-16"
+          >
             {children}
           </main>
           <Footer />
-        </div>
+          <CommandPalette />
+        </MotionProvider>
       </body>
     </html>
   );

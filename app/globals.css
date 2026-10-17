@@ -6,203 +6,473 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-    --font-heading: var(--font-sans);
-    --font-sans: var(--font-sans);
-    --color-sidebar-ring: var(--sidebar-ring);
-    --color-sidebar-border: var(--sidebar-border);
-    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-    --color-sidebar-accent: var(--sidebar-accent);
-    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-    --color-sidebar-primary: var(--sidebar-primary);
-    --color-sidebar-foreground: var(--sidebar-foreground);
-    --color-sidebar: var(--sidebar);
-    --color-chart-5: var(--chart-5);
-    --color-chart-4: var(--chart-4);
-    --color-chart-3: var(--chart-3);
-    --color-chart-2: var(--chart-2);
-    --color-chart-1: var(--chart-1);
-    --color-ring: var(--ring);
-    --color-input: var(--input);
-    --color-border: var(--border);
-    --color-destructive: var(--destructive);
-    --color-accent-foreground: var(--accent-foreground);
-    --color-accent: var(--accent);
-    --color-muted-foreground: var(--muted-foreground);
-    --color-muted: var(--muted);
-    --color-secondary-foreground: var(--secondary-foreground);
-    --color-secondary: var(--secondary);
-    --color-primary-foreground: var(--primary-foreground);
-    --color-primary: var(--primary);
-    --color-popover-foreground: var(--popover-foreground);
-    --color-popover: var(--popover);
-    --color-card-foreground: var(--card-foreground);
-    --color-card: var(--card);
-    --color-foreground: var(--foreground);
-    --color-background: var(--background);
-    --radius-sm: calc(var(--radius) * 0.6);
-    --radius-md: calc(var(--radius) * 0.8);
-    --radius-lg: var(--radius);
-    --radius-xl: calc(var(--radius) * 1.4);
-    --radius-2xl: calc(var(--radius) * 1.8);
-    --radius-3xl: calc(var(--radius) * 2.2);
-    --radius-4xl: calc(var(--radius) * 2.6);
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-sans);
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-subtle-foreground: var(--subtle-foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+
+  /* Type scale: meta 13 · small 14 · body 16 · lead 18 · title 28 · display 36–40 */
+  --text-meta: 0.8125rem;
+  --text-meta--line-height: 1.5;
+  --text-lead: 1.125rem;
+  --text-lead--line-height: 1.6;
+  --text-title: 1.75rem;
+  --text-title--line-height: 1.2;
+  --text-display: clamp(2.125rem, 1.7rem + 1.4vw, 2.5rem);
+  --text-display--line-height: 1.1;
+
+  /* Spring-shaped easing (~stiffness 380 / damping 22) for CSS-only nudges
+     in server components: `transition-transform duration-500 ease-spring` */
+  --ease-spring: linear(
+    0, 0.06 2.4%, 0.23 5%, 0.49 8.2%, 0.77 11.8%, 0.97 15.5%, 1.08 19.4%,
+    1.12 23%, 1.1 27%, 1.05 32%, 1 37.5%, 0.98 43%, 0.985 50%, 1 60%, 1
+  );
 }
 
+/* ─── Tokens ──────────────────────────────────────────────────── */
+/* Near-neutral grays with a hint of warmth, plus one vermilion accent.
+   The accent is only for: hover underlines, the active nav indicator,
+   focus rings, the "Active" dot, row-title hover and text selection.
+   Never for fills. Light 5.1:1 on background, dark 7.4:1 (AA). */
 :root {
-    --background: oklch(1 0 0);
-    --foreground: oklch(0.145 0 0);
-    --card: oklch(1 0 0);
-    --card-foreground: oklch(0.145 0 0);
-    --popover: oklch(1 0 0);
-    --popover-foreground: oklch(0.145 0 0);
-    --primary: oklch(0.205 0 0);
-    --primary-foreground: oklch(0.985 0 0);
-    --secondary: oklch(0.97 0 0);
-    --secondary-foreground: oklch(0.205 0 0);
-    --muted: oklch(0.97 0 0);
-    --muted-foreground: oklch(0.556 0 0);
-    --accent: oklch(0.97 0 0);
-    --accent-foreground: oklch(0.205 0 0);
-    --destructive: oklch(0.577 0.245 27.325);
-    --border: oklch(0.922 0 0);
-    --input: oklch(0.922 0 0);
-    --ring: oklch(0.708 0 0);
-    --chart-1: oklch(0.87 0 0);
-    --chart-2: oklch(0.556 0 0);
-    --chart-3: oklch(0.439 0 0);
-    --chart-4: oklch(0.371 0 0);
-    --chart-5: oklch(0.269 0 0);
-    --radius: 0.625rem;
-    --sidebar: oklch(0.985 0 0);
-    --sidebar-foreground: oklch(0.145 0 0);
-    --sidebar-primary: oklch(0.205 0 0);
-    --sidebar-primary-foreground: oklch(0.985 0 0);
-    --sidebar-accent: oklch(0.97 0 0);
-    --sidebar-accent-foreground: oklch(0.205 0 0);
-    --sidebar-border: oklch(0.922 0 0);
-    --sidebar-ring: oklch(0.708 0 0);
+  --background: oklch(0.985 0.001 100);
+  --surface: oklch(0.962 0.002 100);
+  --foreground: oklch(0.215 0.003 100);
+  --muted-foreground: oklch(0.44 0.004 100);
+  --subtle-foreground: oklch(0.52 0.004 100);
+  --border: oklch(0.912 0.003 100);
+  --accent: oklch(0.55 0.18 33);
+  --accent-foreground: oklch(0.985 0.001 100);
+
+  /* Motion. CSS-side twins of lib/motion.ts for the few CSS-only moves. */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 160ms;
+  /* Six staggered steps max: 5 × 30 + 240 = 390ms total */
+  --dur-enter: 240ms;
+  --stagger: 30ms;
+
+  --card: var(--background);
+  --card-foreground: var(--foreground);
+  --popover: oklch(0.995 0.001 100);
+  --popover-foreground: var(--foreground);
+  --primary: var(--foreground);
+  --primary-foreground: var(--background);
+  --secondary: var(--surface);
+  --secondary-foreground: var(--foreground);
+  --muted: var(--surface);
+  --destructive: oklch(0.577 0.245 27.325);
+  --input: var(--border);
+  --ring: var(--accent);
+  --radius: 0.5rem;
+
+  /* code */
+  --code-bg: var(--surface);
+  --code-fg: oklch(0.3 0.004 100);
+  --code-comment: oklch(0.52 0.004 100);
+  --code-keyword: oklch(0.47 0.13 300);
+  --code-string: oklch(0.47 0.1 150);
+  --code-number: oklch(0.52 0.12 55);
+  --code-title: oklch(0.47 0.12 252);
+  --code-attr: oklch(0.5 0.1 200);
+
+  color-scheme: light;
 }
 
 .dark {
-    --background: oklch(0.145 0 0);
-    --foreground: oklch(0.985 0 0);
-    --card: oklch(0.205 0 0);
-    --card-foreground: oklch(0.985 0 0);
-    --popover: oklch(0.205 0 0);
-    --popover-foreground: oklch(0.985 0 0);
-    --primary: oklch(0.922 0 0);
-    --primary-foreground: oklch(0.205 0 0);
-    --secondary: oklch(0.269 0 0);
-    --secondary-foreground: oklch(0.985 0 0);
-    --muted: oklch(0.269 0 0);
-    --muted-foreground: oklch(0.708 0 0);
-    --accent: oklch(0.269 0 0);
-    --accent-foreground: oklch(0.985 0 0);
-    --destructive: oklch(0.704 0.191 22.216);
-    --border: oklch(1 0 0 / 10%);
-    --input: oklch(1 0 0 / 15%);
-    --ring: oklch(0.556 0 0);
-    --chart-1: oklch(0.87 0 0);
-    --chart-2: oklch(0.556 0 0);
-    --chart-3: oklch(0.439 0 0);
-    --chart-4: oklch(0.371 0 0);
-    --chart-5: oklch(0.269 0 0);
-    --sidebar: oklch(0.205 0 0);
-    --sidebar-foreground: oklch(0.985 0 0);
-    --sidebar-primary: oklch(0.488 0.243 264.376);
-    --sidebar-primary-foreground: oklch(0.985 0 0);
-    --sidebar-accent: oklch(0.269 0 0);
-    --sidebar-accent-foreground: oklch(0.985 0 0);
-    --sidebar-border: oklch(1 0 0 / 10%);
-    --sidebar-ring: oklch(0.556 0 0);
+  --background: oklch(0.185 0.002 100);
+  --surface: oklch(0.218 0.003 100);
+  --foreground: oklch(0.935 0.003 100);
+  --muted-foreground: oklch(0.75 0.004 100);
+  --subtle-foreground: oklch(0.65 0.004 100);
+  --border: oklch(0.285 0.003 100);
+  --accent: oklch(0.73 0.155 40);
+  --accent-foreground: oklch(0.185 0.002 100);
+
+  --popover: oklch(0.22 0.003 100);
+  --destructive: oklch(0.704 0.191 22.216);
+
+  --code-fg: oklch(0.88 0.004 100);
+  --code-comment: oklch(0.65 0.004 100);
+  --code-keyword: oklch(0.78 0.09 310);
+  --code-string: oklch(0.8 0.09 150);
+  --code-number: oklch(0.8 0.1 60);
+  --code-title: oklch(0.8 0.08 252);
+  --code-attr: oklch(0.8 0.07 200);
+
+  color-scheme: dark;
 }
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
-    }
-    body {
-      @apply bg-background text-foreground;
-      font-family: var(--font-geist-sans, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial);
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-  
-    /* monospace fallback for code blocks */
-    code, pre, kbd {
-      font-family: var(--font-geist-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Segoe UI Mono", "Helvetica Neue", monospace);
-    }
+    @apply border-border;
+  }
   html {
     @apply font-sans;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-size: 1rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "ss01", "cv11";
+  }
+  code,
+  pre,
+  kbd {
+    font-family: var(--font-mono);
+  }
+  ::selection {
+    background: color-mix(in oklch, var(--accent) 28%, transparent);
+    color: var(--foreground);
+  }
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+}
+
+/* Theme crossfade: only applied for the moment the theme is toggled */
+html.theme-transition,
+html.theme-transition *,
+html.theme-transition *::before,
+html.theme-transition *::after {
+  transition:
+    background-color 200ms ease,
+    color 200ms ease,
+    border-color 200ms ease,
+    fill 200ms ease !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  html.theme-transition,
+  html.theme-transition * {
+    transition: none !important;
+  }
+}
+
+/* ─── Link underline that draws in from the left ──────────────── */
+/* Transform-only. `.link-draw` on the link itself, or `.link-draw-host`
+   on the link + `.link-draw-target` on the text inside it (so the line
+   sits under the words, not under the padded hit area or the arrow). */
+.link-draw,
+.link-draw-target {
+  position: relative;
+  text-decoration: none;
+}
+.link-draw::after,
+.link-draw-target::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 280ms var(--ease-out);
+  pointer-events: none;
+}
+.link-draw:hover::after,
+.link-draw:focus-visible::after,
+.link-draw-host:hover .link-draw-target::after,
+.link-draw-host:focus-visible .link-draw-target::after {
+  transform: scaleX(1);
+}
+/* Links inside running text keep a faint rest line under the drawn one */
+.link-inline::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 1px;
+  background: var(--border);
+  pointer-events: none;
+}
+/* A link whose underline is visible at rest (the Resume link) */
+.link-draw[data-rest]::after,
+.link-draw-target[data-rest]::after {
+  transform: scaleX(1);
+  opacity: 0.45;
+  transition:
+    transform 280ms var(--ease-out),
+    opacity var(--dur-fast) ease;
+}
+.link-draw[data-rest]:hover::after,
+.link-draw-host:hover .link-draw-target[data-rest]::after,
+.link-draw-host:focus-visible .link-draw-target[data-rest]::after {
+  opacity: 1;
+}
+
+/* ─── First-load enter ────────────────────────────────────────── */
+/* CSS so content is never hidden if JS fails. MotionProvider sets
+   html[data-entered] after the first load, so client navigations
+   and scrolling never replay it. Stagger via style="--i: n". */
+@keyframes enter-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+html:not([data-entered]) .enter {
+  animation: enter-up var(--dur-enter) var(--ease-out) both;
+  animation-delay: calc(var(--i, 0) * var(--stagger));
+}
+@media (prefers-reduced-motion: reduce) {
+  @keyframes enter-up {
+    from {
+      opacity: 0;
     }
+  }
+  .link-draw::after,
+  .link-draw-target::after {
+    transition: opacity var(--dur-fast) ease;
+  }
+}
+
+/* ─── Post prose ──────────────────────────────────────────────── */
+.post-prose {
+  --tw-prose-body: var(--foreground);
+  --tw-prose-headings: var(--foreground);
+  --tw-prose-lead: var(--muted-foreground);
+  --tw-prose-links: var(--foreground);
+  --tw-prose-bold: var(--foreground);
+  --tw-prose-counters: var(--subtle-foreground);
+  --tw-prose-bullets: var(--subtle-foreground);
+  --tw-prose-hr: var(--border);
+  --tw-prose-quotes: var(--muted-foreground);
+  --tw-prose-quote-borders: var(--border);
+  --tw-prose-captions: var(--subtle-foreground);
+  --tw-prose-code: var(--foreground);
+  --tw-prose-pre-code: var(--code-fg);
+  --tw-prose-pre-bg: var(--code-bg);
+  --tw-prose-th-borders: var(--border);
+  --tw-prose-td-borders: var(--border);
+  max-width: 68ch;
+  font-size: 1rem;
+  line-height: 1.75;
+}
+.post-prose :where(h2) {
+  font-size: 1.375rem;
+  line-height: 1.3;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  scroll-margin-top: 1.5rem;
+}
+.post-prose :where(h3) {
+  font-size: 1.0625rem;
+  line-height: 1.4;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+  scroll-margin-top: 1.5rem;
+}
+.post-prose :where(h4) {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--muted-foreground);
+}
+.post-prose :where(a) {
+  text-decoration-color: var(--border);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: text-decoration-color 150ms ease, color 150ms ease;
+}
+.post-prose :where(a):hover {
+  color: var(--accent);
+  text-decoration-color: currentColor;
+}
+.post-prose :where(blockquote) {
+  font-style: normal;
+  font-weight: 400;
+  border-left-width: 2px;
+  padding-left: 1.25rem;
+}
+.post-prose :where(blockquote p)::before,
+.post-prose :where(blockquote p)::after {
+  content: none;
+}
+.post-prose :where(hr) {
+  margin: 3rem 0;
+}
+.post-prose :where(:not(pre) > code) {
+  font-size: 0.875em;
+  font-weight: 450;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.1em 0.35em;
+}
+.post-prose :where(:not(pre) > code)::before,
+.post-prose :where(:not(pre) > code)::after {
+  content: none;
+}
+.post-prose :where(pre) {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0;
+  margin: 1.75rem 0;
+  font-size: 0.8125rem;
+  line-height: 1.7;
+  overflow-x: auto;
+}
+.post-prose :where(pre code) {
+  display: block;
+  padding: 1rem 1.25rem;
+  background: transparent;
+}
+.post-prose :where(table) {
+  font-size: 0.875rem;
+}
+.post-prose :where(thead th) {
+  font-weight: 600;
+}
+.post-prose :where(img) {
+  border-radius: 4px;
+}
+
+/* highlight.js, themed from tokens so both modes match the page */
+.hljs {
+  color: var(--code-fg);
+  background: transparent;
+}
+.hljs-comment,
+.hljs-quote {
+  color: var(--code-comment);
+  font-style: italic;
+}
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-built_in,
+.hljs-meta .hljs-keyword,
+.hljs-doctag {
+  color: var(--code-keyword);
+}
+.hljs-string,
+.hljs-regexp,
+.hljs-addition,
+.hljs-meta .hljs-string {
+  color: var(--code-string);
+}
+.hljs-number,
+.hljs-literal,
+.hljs-symbol,
+.hljs-bullet {
+  color: var(--code-number);
+}
+.hljs-title,
+.hljs-title.function_,
+.hljs-section,
+.hljs-name {
+  color: var(--code-title);
+}
+.hljs-attr,
+.hljs-attribute,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-type,
+.hljs-params,
+.hljs-property {
+  color: var(--code-attr);
+}
+.hljs-deletion {
+  color: var(--destructive);
+}
+.hljs-emphasis {
+  font-style: italic;
+}
+.hljs-strong {
+  font-weight: 600;
 }
 
 /* ─── Admonitions ─────────────────────────────────────────────── */
 .admonition {
-  border-left: 4px solid;
-  border-radius: 0.375rem;
-  padding: 0.75rem 1rem;
-  margin: 1.25rem 0;
-  background: oklch(0.97 0 0);
-}
-.dark .admonition {
-  background: oklch(0.205 0 0);
+  --adm: var(--subtle-foreground);
+  border-left: 2px solid var(--adm);
+  border-radius: 0 4px 4px 0;
+  padding: 0.875rem 1.125rem;
+  margin: 1.75rem 0;
+  background: var(--surface);
+  font-size: 0.9375rem;
 }
 .admonition-title {
   font-weight: 600;
   font-size: 0.875rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin: 0 0 0.5rem;
+  color: var(--adm);
+  margin: 0 0 0.375rem !important;
 }
-.admonition > * + * { margin-top: 0.5rem; }
-.admonition > *:last-child { margin-bottom: 0; }
-
-/* Per-type colours */
-.admonition-note    { border-color: #3b82f6; }
-.admonition-note .admonition-title    { color: #3b82f6; }
-.admonition-info    { border-color: #06b6d4; }
-.admonition-info .admonition-title    { color: #06b6d4; }
-.admonition-tip     { border-color: #10b981; }
-.admonition-tip .admonition-title     { color: #10b981; }
-.admonition-success { border-color: #22c55e; }
-.admonition-success .admonition-title { color: #22c55e; }
+.admonition > * + * {
+  margin-top: 0.5rem;
+}
+.admonition > *:last-child {
+  margin-bottom: 0;
+}
+.admonition p {
+  margin: 0;
+}
+.admonition-note,
+.admonition-info,
+.admonition-abstract,
+.admonition-example {
+  --adm: var(--accent);
+}
+.admonition-tip,
+.admonition-success {
+  --adm: var(--code-string);
+}
 .admonition-warning,
-.admonition-caution { border-color: #f59e0b; }
-.admonition-warning .admonition-title,
-.admonition-caution .admonition-title { color: #f59e0b; }
-.admonition-danger  { border-color: #ef4444; }
-.admonition-danger .admonition-title  { color: #ef4444; }
-.admonition-abstract { border-color: #a855f7; }
-.admonition-abstract .admonition-title { color: #a855f7; }
-.admonition-question { border-color: #f97316; }
-.admonition-question .admonition-title { color: #f97316; }
-.admonition-bug     { border-color: #ec4899; }
-.admonition-bug .admonition-title     { color: #ec4899; }
-.admonition-example { border-color: #8b5cf6; }
-.admonition-example .admonition-title { color: #8b5cf6; }
-.admonition-quote   { border-color: oklch(0.556 0 0); }
-.admonition-quote .admonition-title   { color: oklch(0.556 0 0); }
-
-/* prose override: remove extra margin inside callouts */
-.admonition p { margin: 0; }
+.admonition-caution,
+.admonition-question {
+  --adm: var(--code-number);
+}
+.admonition-danger,
+.admonition-bug {
+  --adm: var(--destructive);
+}
 
 /* ─── Content Tabs ────────────────────────────────────────────── */
 .content-tabs {
-  margin: 1.25rem 0;
+  margin: 1.75rem 0;
   border: 1px solid var(--border);
-  border-radius: 0.5rem;
+  border-radius: 6px;
   overflow: hidden;
 }
 .tab-nav {
   display: flex;
   flex-wrap: wrap;
-  gap: 0;
-  background: oklch(0.97 0 0);
+  background: var(--surface);
   border-bottom: 1px solid var(--border);
-}
-.dark .tab-nav {
-  background: oklch(0.205 0 0);
 }
 .tab-button {
   padding: 0.5rem 1rem;
@@ -214,46 +484,50 @@
   cursor: pointer;
   color: var(--muted-foreground);
   transition: color 0.15s, border-color 0.15s;
-  margin-bottom: -1px;
+  margin: 0 0 -1px !important;
 }
-.tab-button:hover { color: var(--foreground); }
+.tab-button:hover {
+  color: var(--foreground);
+}
 .tab-button.active {
   color: var(--foreground);
-  border-bottom-color: var(--primary);
+  border-bottom-color: var(--foreground);
 }
-.tab-panels { padding: 1rem; }
-.tab-panel { display: none; }
-.tab-panel.active { display: block; }
-/* remove unwanted prose margin inside panels */
-.tab-panel > *:first-child { margin-top: 0; }
-.tab-panel > *:last-child  { margin-bottom: 0; }
+.tab-panels {
+  padding: 1rem 1.25rem;
+}
+.tab-panel {
+  display: none;
+}
+.tab-panel.active {
+  display: block;
+}
+.tab-panel > *:first-child {
+  margin-top: 0;
+}
+.tab-panel > *:last-child {
+  margin-bottom: 0;
+}
 
 /* ─── Task-list (GFM checklists) ─────────────────────────────── */
-.prose ul:has(input[type="checkbox"]) {
+.post-prose ul:has(input[type="checkbox"]) {
   list-style: none;
   padding-left: 0;
 }
-.prose ul li:has(input[type="checkbox"]) {
+.post-prose ul li:has(input[type="checkbox"]) {
   display: flex;
   align-items: flex-start;
   gap: 0.5rem;
 }
-.prose ul li input[type="checkbox"] {
-  margin-top: 0.25rem;
-  accent-color: var(--primary);
+.post-prose ul li input[type="checkbox"] {
+  margin-top: 0.45rem;
+  accent-color: var(--accent);
   flex-shrink: 0;
 }
 
 /* ─── KaTeX display-math spacing ─────────────────────────────── */
-.katex-display { overflow-x: auto; padding: 0.25rem 0; }
-
-/* ─── Code blocks (highlight.js) ─────────────────────────────── */
-.prose pre {
-  padding: 0 !important;
-  background: transparent !important;
-}
-.prose pre code.hljs {
-  border-radius: 0.5rem;
-  font-size: 0.875rem;
-  padding: 1rem 1.25rem;
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.25rem 0;
 }

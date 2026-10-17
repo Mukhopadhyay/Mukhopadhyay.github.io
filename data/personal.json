@@ -1,5 +1,7 @@
 {
   "name": "Pranesh Mukhopadhyay",
+  "role": "Backend & applied ML engineer",
+  "tenure": "5.5 yrs",
   "location": "Mumbai, India",
   "email": "pranesh.mukhopadhyay@outlook.com",
   "phone": "+91-9674770912",
@@ -17,5 +19,5 @@
       "url": "https://kaggle.com/praneshmukhopadhyay"
     }
   ],
-  "summary": "Backend and applied ML engineer with 5.5+ years of experience designing and deploying production-grade Python systems. Specialized in FastAPI-based microservices, real-time decision systems, and ML-powered APIs in high-throughput environments."
+  "summary": "I design and ship production Python systems: FastAPI microservices, real-time decision systems and ML-powered APIs built for high-throughput environments."
 }

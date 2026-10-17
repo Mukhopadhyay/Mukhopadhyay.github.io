@@ -196,7 +196,50 @@ function remarkTabs() {
   };
 }
 
-async function markdownToHtml(md: string): Promise<string> {
+export type TocItem = { id: string; text: string; depth: 2 | 3 };
+
+type HastNode = {
+  type: string;
+  value?: string;
+  tagName?: string;
+  properties?: Record<string, unknown>;
+  children?: HastNode[];
+};
+
+function hastText(node: HastNode): string {
+  if (node.type === "text") return node.value ?? "";
+  return (node.children ?? []).map(hastText).join("");
+}
+
+// Rehype plugin: collect h2/h3 (after rehype-slug has given them ids) for the TOC.
+function rehypeCollectToc(toc: TocItem[]) {
+  return () => (tree: Parameters<typeof visit>[0]) => {
+    visit(tree, "element", (node: HastNode) => {
+      if ((node.tagName === "h2" || node.tagName === "h3") && node.properties?.id) {
+        toc.push({
+          id: String(node.properties.id),
+          text: hastText(node).trim(),
+          depth: node.tagName === "h2" ? 2 : 3,
+        });
+      }
+    });
+  };
+}
+
+/** The page header already shows the title, so drop a leading "# Title" line. */
+function stripLeadingH1(md: string): string {
+  return md.replace(/^\s*#\s+[^\n]+\n+/, "");
+}
+
+function readingMinutes(md: string): number {
+  const words = md
+    .replace(/```[\s\S]*?```/g, " ")
+    .split(/\s+/)
+    .filter(Boolean).length;
+  return Math.max(1, Math.round(words / 230));
+}
+
+async function markdownToHtml(md: string, toc: TocItem[] = []): Promise<string> {
   const result = await unified()
     .use(remarkParse)
     .use(remarkGfm)
@@ -208,6 +251,7 @@ async function markdownToHtml(md: string): Promise<string> {
     .use(rehypeKatex)
     .use(rehypeHighlight, { detect: true })
     .use(rehypeSlug)
+    .use(rehypeCollectToc(toc))
     .use(rehypeStringify, { allowDangerousHtml: true })
     .process(md);
 
@@ -250,7 +294,6 @@ export async function getPostBySlug(slug?: string) {
   const slugStr = String(slug);
   const POSTS_DIR = resolvePostsDir();
   let filePath = path.join(POSTS_DIR, `${slugStr}.md`);
-  console.log("File path: ", filePath);
 
   // fallback: try decoded slug and case-insensitive match if direct file missing
   if (!fs.existsSync(filePath)) {
@@ -277,12 +320,16 @@ export async function getPostBySlug(slug?: string) {
   if (!fs.existsSync(filePath)) return null;
   const raw = fs.readFileSync(filePath, "utf-8");
   const { frontmatter, body } = parseFrontmatter(raw);
-  const html = await markdownToHtml(body);
+  const markdown = stripLeadingH1(body);
+  const toc: TocItem[] = [];
+  const html = await markdownToHtml(markdown, toc);
   return {
     slug: slugStr,
     title: frontmatter.title || slugStr,
     date: frontmatter.date,
     description: frontmatter.description,
+    minutes: readingMinutes(markdown),
+    toc,
     content: html,
   };
 }

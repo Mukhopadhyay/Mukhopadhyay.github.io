@@ -1,17 +1,16 @@
 ---
-title: "Temp: Markdown Feature Showcase"
+title: "Markdown & Writing Guide"
 date: 2026-04-13
-description: "A temporary blog showcasing Markdown features: headings, lists, tables, LaTeX, admonitions, code, diagrams, footnotes, and more."
+description: "A reference post showcasing this site's Markdown features: headings, lists, tables, LaTeX, admonitions, code, diagrams, footnotes, and more."
 tags:
-	- temp
 	- markdown
-	- demo
+	- guide
 	- math
 ---
 
-# Temp: Markdown Feature Showcase
+# Markdown & Writing Guide
 
-Welcome! This temporary post demonstrates a broad set of Markdown features you can use in this site — from basic formatting to LaTeX math, admonitions, diagrams, code blocks, footnotes, and more. It's intentionally verbose so you can test renderers, plugins, and styling.
+Welcome! This post is a living reference for the Markdown features available on this site — from basic formatting to LaTeX math, admonitions, diagrams, code blocks, footnotes, and more. It's intentionally verbose so it doubles as a test surface for renderers, plugins, and styling.
 
 > Quick note: run the dev server with `npm run dev` to preview this post locally.
 

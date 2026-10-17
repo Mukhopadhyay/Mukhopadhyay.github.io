@@ -1,91 +1,145 @@
-import { BookOpen, Box, Code, Table } from "lucide-react";
-import { Badge } from "./ui/badge";
-import GithubIcon from "./icons/gh";
-import { Project } from "@/types/types";
+"use client";
 
-const ProjectCard = ({
-  project,
-  recent = false,
-}: {
-  project: Project;
-  recent?: boolean;
-}) => {
+import { forwardRef } from "react";
+import { motion, useReducedMotion, type HTMLMotionProps } from "motion/react";
+import { Project } from "@/types/types";
+import { linkLabel } from "@/lib/format";
+import { STATUS_LABEL, TYPE_LABEL } from "@/lib/projects";
+import { nudge, spring } from "@/lib/motion";
+
+/** Row shifts right on hover; the title arrow follows a little further. */
+export const rowVariants = {
+  hidden: { opacity: 0, y: 8 },
+  shown: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: -4, transition: { duration: 0.15 } },
+  hover: { x: nudge.row },
+};
+const arrowVariants = {
+  hover: { x: nudge.arrow, y: -nudge.arrow },
+};
+
+type Props = { project: Project } & Omit<HTMLMotionProps<"article">, "children">;
+
+/** One project as a row: title + status, description, outcomes, then stack and links. */
+const ProjectCard = forwardRef<HTMLElement, Props>(function ProjectCard(
+  { project, className = "", ...motionProps },
+  ref,
+) {
+  const reduce = useReducedMotion();
+  const primary = project.links?.[0];
+  const year = project.year ?? project.date?.slice(0, 4);
+  const metrics = (project.metrics ?? []).filter((m) => m.value.trim());
+  const stack = project.tags ?? project.tech_stack ?? [];
+
   return (
-    <article className="border-b-2 pb-4 pt-2">
-      <div className="flex justify-between items-center">
-        <a
-          className="text-lg font-semibold cursor-pointer hover:underline"
-          href={
-            project.links && project.links.length > 0
-              ? project.links[0].url
-              : "#"
-          }
-          target="_blank"
-        >
-          {project.name}
-        </a>
-        {recent && (
-          <div className="flex items-center gap-1 text-foreground/60">
-            <Code size={14} />
-            <p className="text-xs">Project</p>
-          </div>
+    <motion.article
+      ref={ref}
+      whileHover={reduce ? undefined : "hover"}
+      transition={spring.soft}
+      className={`group py-6 first:pt-0 last:pb-0 ${className}`}
+      {...motionProps}
+    >
+      <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-0.5">
+        <h3 className="font-medium transition-colors duration-150 group-hover:text-accent">
+          {primary ? (
+            <a
+              href={primary.url}
+              target="_blank"
+              rel="noreferrer"
+              className="link-draw-host inline-flex items-baseline gap-1"
+            >
+              <span className="link-draw-target">{project.name}</span>
+              <motion.span
+                aria-hidden
+                variants={arrowVariants}
+                transition={spring.soft}
+                className="inline-block text-[0.8em] text-subtle-foreground transition-colors group-hover:text-accent"
+              >
+                ↗
+              </motion.span>
+            </a>
+          ) : (
+            project.name
+          )}
+        </h3>
+        <p className="flex items-center gap-x-2 font-mono text-meta text-subtle-foreground">
+          {project.status && (
+            <span className="inline-flex items-center gap-1.5">
+              {project.status === "active" && (
+                <span aria-hidden className="size-1.5 rounded-full bg-accent" />
+              )}
+              {STATUS_LABEL[project.status]}
+            </span>
+          )}
+          {project.status && (project.type || year) && <span aria-hidden>·</span>}
+          {project.type && <span>{TYPE_LABEL[project.type]}</span>}
+          {project.type && year && <span aria-hidden>·</span>}
+          {year && <span>{year}</span>}
+        </p>
+      </div>
+
+      {project.description && (
+        <p className="mt-1 text-muted-foreground text-pretty">{project.description}</p>
+      )}
+
+      {project.highlights && project.highlights.length > 0 && (
+        <ul className="mt-3 space-y-1 text-[0.9375rem]">
+          {project.highlights.map((h) => (
+            <li
+              key={h}
+              className="relative pl-4 before:absolute before:left-0 before:text-subtle-foreground before:content-['–']"
+            >
+              {h}
+            </li>
+          ))}
+        </ul>
+      )}
+
+      {metrics.length > 0 && (
+        <dl className="mt-3 flex flex-wrap gap-x-5 gap-y-1 font-mono text-meta">
+          {metrics.map((m) => (
+            <div key={m.label} className="flex gap-1.5">
+              <dt className="text-subtle-foreground">{m.label}</dt>
+              <dd className="text-foreground">{m.value}</dd>
+            </div>
+          ))}
+        </dl>
+      )}
+
+      <div className="mt-3 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 font-mono text-meta">
+        {stack.length > 0 && (
+          <p className="text-subtle-foreground">
+            <span className="sr-only">Stack: </span>
+            {stack.join(" · ")}
+          </p>
+        )}
+        {project.links && project.links.length > 0 && (
+          <ul className="flex flex-wrap gap-x-4">
+            {project.links.map((link) => (
+              <li key={link.url}>
+                <a
+                  href={link.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="link-draw-host group/link inline-flex min-h-8 items-center text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  <span className="link-draw-target">
+                    {linkLabel(link.type)}
+                  </span>
+                  <span
+                    aria-hidden
+                    className="ml-0.5 inline-block transition-transform duration-500 ease-spring group-hover/link:-translate-y-px group-hover/link:translate-x-px motion-reduce:transition-none motion-reduce:transform-none"
+                  >
+                    ↗
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
         )}
       </div>
-      {project.description && (
-        <div className="text-sm text-foreground/60">{project.description}</div>
-      )}
-      {project.tech_stack && (
-        <div className="flex flex-wrap gap-3 mt-2 items-center">
-          {project.tech_stack.map((tech, i) => (
-            <Badge
-              key={i}
-              variant="destructive"
-              className="cursor-pointer px-2"
-            >
-              {tech}
-            </Badge>
-          ))}
-        </div>
-      )}
-
-      {project.links && project.links.length > 0 && (
-        <div className="text-sm text-foreground/60 mt-2 flex flex-row gap-2">
-          {project.links.map((link, idx) => (
-            <div
-              key={idx}
-              className="flex items-center gap-1 cursor-pointer"
-              onClick={() => {
-                window.open(link.url, "_blank");
-              }}
-            >
-              {/* Github icon if link.type == 'github' */}
-              {link.type === "github" && <GithubIcon />}
-              {link.type === "docs" && <BookOpen className="w-4 h-4" />}
-              {link.type === "pypi" && <Box className="w-4 h-4" />}
-              {link.type === "kaggle" && <Table className="w-4 h-4" />}
-              <span className="hover:underline">{link.type}</span>
-            </div>
-          ))}
-        </div>
-      )}
-
-      {/* Highlights */}
-      {recent === false && (
-        <div>
-          {project.highlights && project.highlights.length > 0 && (
-            <div className="mt-2 ml-4">
-              <h3 className="font-medium">Highlights:</h3>
-              <ul className="list-disc list-inside mt-1 text-sm text-foreground/60">
-                {project.highlights.map((h, idx) => (
-                  <li key={idx}>{h}</li>
-                ))}
-              </ul>
-            </div>
-          )}
-        </div>
-      )}
-    </article>
+    </motion.article>
   );
-};
+});
 
 export default ProjectCard;

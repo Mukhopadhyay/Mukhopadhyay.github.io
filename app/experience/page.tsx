@@ -1,21 +1,15 @@
-"use client";
 import data from "../../data/experiences.json";
-import Reveal from "../../components/Reveal";
 import ExperienceCard from "../../components/ExperienceCard";
 import { Experience } from "@/types/types";
 
 export default function ExperiencePage() {
-  const experiences: Experience[] = data || [];
+  const experiences = data as Experience[];
 
   return (
     <div className="flex flex-col gap-6">
-      <Reveal>
-        <h1 className="text-2xl font-bold">Experience</h1>
-      </Reveal>
-      {experiences.map((exp, expIdx) => (
-        <Reveal key={expIdx} delay={expIdx * 60}>
-          <ExperienceCard exp={exp} />
-        </Reveal>
+      <h1 className="text-title font-semibold tracking-[-0.02em]">Experience</h1>
+      {experiences.map((exp) => (
+        <ExperienceCard key={`${exp.company}-${exp.start_date}`} exp={exp} />
       ))}
     </div>
   );
