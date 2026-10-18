@@ -10,6 +10,7 @@ import { linkLabel } from "@/lib/format";
 import { PRESS_SCALE, enterAt, spring } from "@/lib/motion";
 import Magnetic from "./Magnetic";
 import NowReadingCard from "./reading/NowReadingCard";
+import Link from "next/link";
 
 export const RESUME_URL = "/Resume-Pranesh.M.pdf";
 
@@ -34,6 +35,19 @@ export default function ResumeCard({ nowReading }: { nowReading?: Book }) {
 
   return (
     <header>
+
+      <Magnetic>
+        <a
+          href={`https://github.com/${personal.username}`} target="_blank"
+          className={textLink}
+          title={personal.email}
+        >
+          <span className="link-draw-target link-inline">
+            @{personal.username}
+          </span>
+        </a>
+      </Magnetic>
+
       <h1 className="enter text-display font-semibold tracking-[-0.025em] text-balance">
         {personal.name}
       </h1>

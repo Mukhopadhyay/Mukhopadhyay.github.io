@@ -1,6 +1,8 @@
 // Personal
 export type PersonalInfo = {
   name: string;
+  /** GitHub-style username, e.g. "Mukhopadhyay". */
+  username: string;
   /** One-line role shown under the name, e.g. "Backend & applied ML engineer". */
   role: string;
   /** Years of experience shown in the role line, e.g. "5.5 yrs". Update yearly. */

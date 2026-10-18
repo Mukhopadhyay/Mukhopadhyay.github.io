@@ -11,7 +11,7 @@ export default function Nav() {
           href="/"
           className="-ml-1 inline-flex min-h-10 items-center whitespace-nowrap px-1 text-sm font-medium tracking-tight"
         >
-          Pranesh<span className="hidden sm:inline">&nbsp;Mukhopadhyay</span>
+          <span>@Mukhopadhyay</span>
         </Link>
         <div className="flex items-center gap-0.5 sm:gap-3">
           <NavLinks />
