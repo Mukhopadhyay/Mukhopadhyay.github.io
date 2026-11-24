@@ -5,7 +5,7 @@ import NavLinks from "./NavLinks";
 
 export default function Nav() {
   return (
-    <header className="w-full">
+    <header className="site-chrome w-full">
       <div className="mx-auto flex max-w-[46rem] items-center justify-between gap-4 px-5 pt-4">
         <Link
           href="/"

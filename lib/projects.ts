@@ -41,6 +41,7 @@ export function sortProjects(list: Project[]): Project[] {
 /* ─── Filters ─────────────────────────────────────────────────── */
 
 export const TYPE_LABEL: Record<ProjectType, string> = {
+  app: "App",
   library: "Library",
   dataset: "Dataset",
   tool: "Tool",

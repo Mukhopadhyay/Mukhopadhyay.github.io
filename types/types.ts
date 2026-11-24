@@ -14,7 +14,7 @@ export type PersonalInfo = {
   summary: string;
 };
 
-export type ProjectType = "library" | "dataset" | "tool";
+export type ProjectType = "app" | "library" | "dataset" | "tool";
 export type ProjectStatus = "active" | "maintained" | "archived";
 
 // Experiences

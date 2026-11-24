@@ -14,7 +14,7 @@ export default function ProjectsPage() {
       <header className="enter">
         <h1 className="text-title font-semibold tracking-[-0.02em]">Projects</h1>
         <p className="mt-3 max-w-[60ch] text-muted-foreground">
-          Open-source libraries and datasets, with links to code, docs and packages.
+          Open-source apps, libraries and datasets, with links to code, docs and packages.
         </p>
       </header>
 

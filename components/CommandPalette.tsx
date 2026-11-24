@@ -12,6 +12,7 @@ import {
   Rss,
   Search,
   Table,
+  Waypoints,
 } from "lucide-react";
 import personal from "@/data/personal.json";
 import GithubIcon from "./icons/gh";
@@ -61,6 +62,13 @@ function buildCommands(): Command[] {
       label: "Reading",
       icon: () => <BookOpen className="w-4 h-4" />,
       run: (router) => router.push("/reading"),
+    },
+    {
+      id: "synapse",
+      label: "Synapse",
+      hint: "knowledge map",
+      icon: () => <Waypoints className="w-4 h-4" />,
+      run: (router) => router.push("/synapse"),
     },
     {
       id: "copy-email",

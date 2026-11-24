@@ -9,6 +9,7 @@ import ExperienceList from "@/components/ExperienceList";
 import ProjectCard from "@/components/ProjectCard";
 import { sortProjects } from "@/lib/projects";
 import BlogCard from "@/components/BlogCard";
+import SynapseHook from "@/components/synapse/SynapseHook";
 import { enterAt } from "@/lib/motion";
 
 const HOME_PROJECTS = 2;
@@ -24,7 +25,11 @@ export default function Home() {
     <div className="flex flex-col gap-16 md:gap-20">
       <ResumeCard nowReading={nowReading} />
 
-      <Section id="experience" title="Experience" className="enter" style={enterAt(4)}>
+      <aside aria-label="New on the portfolio" className="enter" style={enterAt(4)}>
+        <SynapseHook />
+      </aside>
+
+      <Section id="experience" title="Experience" className="enter" style={enterAt(5)}>
         <ExperienceList items={experience} />
       </Section>
 
