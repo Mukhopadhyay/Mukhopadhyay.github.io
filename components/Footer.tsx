@@ -11,7 +11,7 @@ export default function Footer() {
   const linkClass = "link-draw transition-colors hover:text-foreground";
 
   return (
-    <footer className="mx-auto w-full max-w-[46rem] px-5 pb-10">
+    <footer className="site-chrome mx-auto w-full max-w-[46rem] px-5 pb-10">
       <p className="border-t border-border pt-6 font-mono text-meta text-subtle-foreground">
         © {year} {personal.name}
         <span aria-hidden className="mx-2">·</span>

@@ -46,7 +46,7 @@ export default function RootLayout({
         <MotionProvider>
           <a
             href="#content"
-            className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-background focus:px-3 focus:py-2 focus:text-sm"
+            className="site-chrome sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-background focus:px-3 focus:py-2 focus:text-sm"
           >
             Skip to content
           </a>

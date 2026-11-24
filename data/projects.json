@@ -1,5 +1,35 @@
 [
   {
+    "name": "Synapse",
+    "description": "A map of how ideas lean on each other: one concept per short note, with a line drawn for every dependency.",
+    "type": "app",
+    "status": "active",
+    "year": 2026,
+    "date": "2026-10-21",
+    "tags": [
+      "TypeScript",
+      "Next.js",
+      "D3",
+      "Graphology",
+      "Tailwind CSS"
+    ],
+    "highlights": [
+      "Markdown notes compiled at build time into a typed dependency graph",
+      "Force-directed map showing what to read first, what builds on an idea, and what it's easily confused with",
+      "Full-text search and a command menu across every note"
+    ],
+    "links": [
+      {
+        "type": "live",
+        "url": "https://synapse-kappa-three.vercel.app/"
+      },
+      {
+        "type": "github",
+        "url": "https://github.com/Mukhopadhyay/synapse"
+      }
+    ]
+  },
+  {
     "name": "Pyfake",
     "description": "A Flexible and Extensible fake data generator based on Pydantic models.",
     "type": "library",

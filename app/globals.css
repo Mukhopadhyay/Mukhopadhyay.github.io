@@ -232,6 +232,67 @@ html.theme-transition *::after {
   opacity: 1;
 }
 
+/* ─── Full-bleed app pages (/synapse) ─────────────────────────── */
+/* The page owns the viewport: hide the site chrome and stop the
+   document scrolling behind it. */
+html:has([data-fullbleed]) {
+  overflow: hidden;
+}
+html:has([data-fullbleed]) .site-chrome {
+  display: none;
+}
+
+/* ─── Promo card glow (home → Synapse) ────────────────────────── */
+/* Accent light pooled in two corners, drifting slowly. Softer in light
+   mode, where the same tint reads much stronger on a pale ground. */
+:root {
+  --glow-a: 13%;
+  --glow-b: 7%;
+}
+.dark {
+  --glow-a: 20%;
+  --glow-b: 11%;
+}
+.promo-glow {
+  position: absolute;
+  inset: -30%;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      40% 45% at 78% 30%,
+      color-mix(in oklch, var(--accent) var(--glow-a), transparent),
+      transparent 70%
+    ),
+    radial-gradient(
+      35% 40% at 25% 75%,
+      color-mix(in oklch, var(--accent) var(--glow-b), transparent),
+      transparent 70%
+    );
+  filter: blur(8px);
+  opacity: 0.85;
+  transition: opacity 500ms var(--ease-out);
+  animation: promo-drift 14s ease-in-out infinite alternate;
+}
+.promo-card:hover .promo-glow,
+.promo-card:focus-visible .promo-glow {
+  opacity: 1;
+}
+.promo-card:hover .link-draw-target::after,
+.promo-card:focus-visible .link-draw-target::after {
+  transform: scaleX(1);
+}
+@keyframes promo-drift {
+  to {
+    transform: translate3d(-6%, 4%, 0) scale(1.08);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .promo-glow {
+    animation: none;
+  }
+}
+
 /* ─── First-load enter ────────────────────────────────────────── */
 /* CSS so content is never hidden if JS fails. MotionProvider sets
    html[data-entered] after the first load, so client navigations
