@@ -82,13 +82,12 @@
     ]
   },
   {
-    "name": "YouTube Subtitle Dataset",
+    "name": "YouTuber's saying things",
     "description": "Dataset of 2,500+ YouTube subtitles with annotations",
     "type": "dataset",
     "status": "archived",
     "year": 2021,
     "tags": [
-      "Python",
       "NLP"
     ],
     "highlights": [
@@ -99,12 +98,46 @@
       {
         "type": "kaggle",
         "url": "https://kaggle.com/datasets/praneshmukhopadhyay/youtubers-saying-things"
+      },
+      {
+        "type": "github",
+        "url": "https://github.com/Mukhopadhyay/youtubers-saying-things"
       }
     ],
     "metrics": [
       {
         "label": "Kaggle downloads",
         "value": ""
+      }
+    ]
+  },
+  {
+    "name": "YouTube Thumbnail Dataset",
+    "description": "Top performing video thumbnails from over 90 YouTube channels.",
+    "type": "dataset",
+    "status": "archived",
+    "year": 2022,
+    "tags": [
+      "Image"
+    ],
+    "highlights": [
+      "Published on Kaggle",
+      "The most versatile YouTube thumbnail dataset covering 10 categories of channels"
+    ],
+    "links": [
+      {
+        "type": "kaggle",
+        "url": "https://www.kaggle.com/datasets/praneshmukhopadhyay/youtube-thumbnail-dataset"
+      },
+      {
+        "type": "github",
+        "url": "https://github.com/Mukhopadhyay/YouTube-thumbnail-dataset"
+      }
+    ],
+    "metrics": [
+      {
+        "label": "Kaggle downloads",
+        "value": "1600+"
       }
     ]
   }
